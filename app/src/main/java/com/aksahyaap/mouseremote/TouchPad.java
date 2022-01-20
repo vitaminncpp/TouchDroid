@@ -4,16 +4,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.ServerSocket;
+import java.net.Socket;
 
 public class TouchPad extends AppCompatActivity {
 
@@ -24,6 +28,7 @@ public class TouchPad extends AppCompatActivity {
     private int dx=0;
     private int dy=0;
     private Sender sender;
+    private PrintWriter pw;
     public MData data;
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -41,19 +46,20 @@ public class TouchPad extends AppCompatActivity {
         Log.i("IPandPort",ip+"   "+port);
         txtIP.setText(ip);
         txtPort.setText(port);
+        ProgressDialog dialog=new ProgressDialog(this);
 
         ConstraintLayout layout =(ConstraintLayout)findViewById(R.id.layout_touchpad);
-        try {
-            sender=new Sender(ip,Integer.parseInt(port),data);
-            sender.execute();
-        } catch (IOException e) {
-            Toast toast = Toast.makeText(getApplicationContext(),
-                    "Failed to connect Server !",
-                    Toast.LENGTH_LONG);
+        dialog.show();
+        Socket s=null;
 
-            toast.show();
-            finishActivity(0);
+        try {
+            s = new Socket(ip,Integer.parseInt(port));
+            pw=new PrintWriter(s.getOutputStream());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
+        dialog.dismiss();
 
         layout.setOnTouchListener(new View.OnTouchListener() {
             @Override

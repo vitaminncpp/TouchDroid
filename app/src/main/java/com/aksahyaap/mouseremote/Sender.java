@@ -1,7 +1,9 @@
 package com.aksahyaap.mouseremote;
 
 
+import android.app.PendingIntent;
 import android.os.AsyncTask;
+import android.os.SystemClock;
 import android.util.Log;
 
 import androidx.loader.content.AsyncTaskLoader;
@@ -10,48 +12,24 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-public class Sender extends AsyncTask<Void, Void, Void> {
+public class Sender extends AsyncTask<String, Void, PrintWriter> {
 
-    private String ip;
-    private int port;
-    private Socket s;
-    PrintWriter pw;
-    public MData data;
-
-    public Sender(String ip, int port, MData data) throws IOException {
-        this.ip = ip;
-        this.port = port;
-        this.data = data;
-    }
-
-    public void send(int X, int Y) {
-
-    }
-
-    public void send(String msg) {
-        pw.println(msg);
-    }
 
     @Override
-    protected Void doInBackground(Void... voids) {
-
-
+    protected PrintWriter doInBackground(String... strings) {
+        Socket s=null;
+        PrintWriter pw=null;
         try {
-            s = new Socket(ip, port);
-            pw = new PrintWriter(s.getOutputStream());
-            Log.i("SuccessStatus", "After Creating Socket");
+            s = new Socket(strings[0],Integer.parseInt(strings[1]));
+            pw=new PrintWriter(s.getOutputStream());
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        while (true) {
-
-
-            pw.println(data.X + " " + data.Y);
-            pw.println(data.dx + " " + data.dy);
-
-        }
+        return pw;
     }
+
+
+
 
 }
 

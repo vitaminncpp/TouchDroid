@@ -1,12 +1,8 @@
 package com.aksahyaap.mouseremote;
 
 
-import android.app.PendingIntent;
 import android.os.AsyncTask;
-import android.os.SystemClock;
 import android.util.Log;
-
-import androidx.loader.content.AsyncTaskLoader;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -20,6 +16,7 @@ public class Sender extends AsyncTask<String, Void, PrintWriter> {
         Socket s=null;
         PrintWriter pw=null;
         try {
+            Log.d("!!!!","sending data");
             s = new Socket(strings[0],Integer.parseInt(strings[1]));
             pw=new PrintWriter(s.getOutputStream());
         } catch (IOException e) {

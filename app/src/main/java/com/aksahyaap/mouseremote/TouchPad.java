@@ -57,7 +57,10 @@ public class TouchPad extends AppCompatActivity {
         layout.setOnTouchListener((view, motionEvent) -> {
             int eventType= motionEvent.getActionMasked();
             switch (eventType){
-
+                case MotionEvent.ACTION_UP:
+                    Xp=0;
+                    Yp=0;
+                    break;
                 case MotionEvent.ACTION_MOVE:
                     X= (int) motionEvent.getX();
                     Y= (int) motionEvent.getY();
@@ -67,11 +70,12 @@ public class TouchPad extends AppCompatActivity {
                     data.Y=Y;
                     data.dx=dx;
                     data.dy=dy;
+                    if(Xp!=0&&Yp!=0)
+                        new Thread(new senderThread(String.format("%6d",dx)+"    "+String.format("%6d",dy)+"    end")).start();
 
                     Xp=X;
                     Yp=Y;
                     Log.d("!!!",data.X+" "+data.Y+" "+data.dx+" "+data.dy);
-                    new Thread(new senderThread(data.X+" "+data.Y+" "+data.dx+" "+data.dy)).start();
 
                     break;
                 default:
@@ -94,7 +98,7 @@ public class TouchPad extends AppCompatActivity {
                 client = new Socket(this.ip, Integer.parseInt(this.port));
                 dos = new DataOutputStream(client.getOutputStream());
 
-                new Thread(new senderThread("str1")).start();
+                //new Thread(new senderThread("str1")).start();
             } catch (IOException e) {
                 e.printStackTrace();
             }

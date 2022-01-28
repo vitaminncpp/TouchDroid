@@ -25,10 +25,8 @@ public class TouchPad extends AppCompatActivity {
     private int Yp = 0;
     private int dx = 0;
     private int dy = 0;
-    private Sender sender;
     private Socket client;
-    private PrintWriter pw;
-    public MData data;
+
     public DataOutputStream dos;
 
 
@@ -37,7 +35,7 @@ public class TouchPad extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_touch_pad);
-        data = new MData();
+
 
         String ip = getIntent().getStringExtra("ip");
         String port = getIntent().getStringExtra("port");
@@ -70,16 +68,12 @@ public class TouchPad extends AppCompatActivity {
                     Y = (int) motionEvent.getY();
                     dx = X - Xp;
                     dy = Y - Yp;
-                    data.X = X;
-                    data.Y = Y;
-                    data.dx = dx;
-                    data.dy = dy;
                     if (Xp != 0 && Yp != 0)
                         new Thread(new senderThread(String.format("%6d    %6d    M      end",dx,dy))).start();
 
                     Xp = X;
                     Yp = Y;
-                    Log.d("!!!", data.X + " " + data.Y + " " + data.dx + " " + data.dy);
+
 
                     break;
                 default:

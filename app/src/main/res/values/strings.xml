@@ -2,4 +2,5 @@
     <string name="app_name">MouseRemote</string>
     <string name="enterIp">Enter IP of Destination</string>
     <string name="enterPort">Enter Port of Destination Server</string>
+    <string name="btnConnect">Connect</string>
 </resources>

@@ -4,4 +4,6 @@
     <string name="enterPort">Enter Port of Destination Server</string>
     <string name="btnConnect">Connect</string>
     <string name="waiting">Waiting…</string>
+    <string name="leftBtn">Left\nButton</string>
+    <string name="rightBtn">Right\nButton</string>
 </resources>

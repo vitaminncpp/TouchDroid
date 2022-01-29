@@ -39,6 +39,7 @@ public class TouchPad extends AppCompatActivity {
         Log.i("IP and Port", ip + "   " + port);
 
         ProgressDialog dialog = new ProgressDialog(this);
+        dialog.show();
 
         ConstraintLayout layout = findViewById(R.id.touchpad);
         ConstraintLayout wheel = findViewById(R.id.wheel);
@@ -48,7 +49,6 @@ public class TouchPad extends AppCompatActivity {
 
         txt_ip_port.setText("Connected to "+ip+" : "+port);
 
-        dialog.show();
 
         new Thread(new clientThread(ip, port)).start();
 

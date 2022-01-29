@@ -3,4 +3,5 @@
     <string name="enterIp">Enter IP of Destination</string>
     <string name="enterPort">Enter Port of Destination Server</string>
     <string name="btnConnect">Connect</string>
+    <string name="waiting">Waiting…</string>
 </resources>

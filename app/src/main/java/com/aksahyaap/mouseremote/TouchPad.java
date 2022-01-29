@@ -27,7 +27,7 @@ public class TouchPad extends AppCompatActivity {
     public DataOutputStream dos;
 
 
-    @SuppressLint({"ClickableViewAccessibility", "SetTextI18n"})
+    @SuppressLint({"ClickableViewAccessibility", "SetTextI18n", "DefaultLocale"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

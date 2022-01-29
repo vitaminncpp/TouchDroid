@@ -6,4 +6,6 @@
     <string name="waiting">Waiting…</string>
     <string name="leftBtn">Left\nButton</string>
     <string name="rightBtn">Right\nButton</string>
+    <string name="hrLine">__________</string>
+    <string name="wheelString">Scroll Wheel</string>
 </resources>

@@ -3,6 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/chunn/AndroidStudioProjects/MouseRemote/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.4036458333333333" />
+        <entry key="..\:/Users/chunn/AndroidStudioProjects/MouseRemote/app/src/main/res/drawable/custom_input.xml" value="0.3638888888888889" />
+        <entry key="..\:/Users/chunn/AndroidStudioProjects/MouseRemote/app/src/main/res/drawable/ic_baseline_computer_24.xml" value="0.3638888888888889" />
+        <entry key="..\:/Users/chunn/AndroidStudioProjects/MouseRemote/app/src/main/res/drawable/ic_baseline_mouse_24.xml" value="0.29444444444444445" />
+        <entry key="..\:/Users/chunn/AndroidStudioProjects/MouseRemote/app/src/main/res/drawable/ic_baseline_settings_remote_24.xml" value="0.35185185185185186" />
+        <entry key="..\:/Users/chunn/AndroidStudioProjects/MouseRemote/app/src/main/res/drawable/ic_baseline_wifi_24.xml" value="0.4036458333333333" />
+        <entry key="..\:/Users/chunn/AndroidStudioProjects/MouseRemote/app/src/main/res/drawable/ic_ip.xml" value="0.30277777777777776" />
+        <entry key="..\:/Users/chunn/AndroidStudioProjects/MouseRemote/app/src/main/res/drawable/ic_launcher_background.xml" value="0.4036458333333333" />
+        <entry key="..\:/Users/chunn/AndroidStudioProjects/MouseRemote/app/src/main/res/layout/activity_main.xml" value="0.3875" />
+        <entry key="..\:/Users/chunn/AndroidStudioProjects/MouseRemote/app/src/main/res/layout/activity_touch_pad.xml" value="0.33" />
+        <entry key="..\:/Users/chunn/AndroidStudioProjects/MouseRemote/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3638888888888889" />
+        <entry key="..\:/Users/chunn/AndroidStudioProjects/MouseRemote/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3638888888888889" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3494791666666667" />
         <entry key="app/src/main/res/drawable/custom.xml" value="0.3494791666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
@@ -10,7 +22,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_15" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_15_PREVIEW" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

@@ -48,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:backgroundTint="@color/teal_700"
+        android:backgroundTint="@color/teal_200"
         android:padding="10dp"
         android:text="@string/btnConnect"
         android:textSize="20sp"

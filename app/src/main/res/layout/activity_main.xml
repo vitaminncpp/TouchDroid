@@ -41,7 +41,8 @@
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainTxtIP" />
+        app:layout_constraintTop_toBottomOf="@+id/mainTxtIP"
+        android:importantForAutofill="no"/>
 
     <Button
         android:id="@+id/btnConnect"

@@ -26,13 +26,11 @@ public class TouchPad extends AppCompatActivity {
 
     public DataOutputStream dos;
 
-
     @SuppressLint({"ClickableViewAccessibility", "SetTextI18n", "DefaultLocale"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_touch_pad);
-
 
         String ip = getIntent().getStringExtra("ip");
         String port = getIntent().getStringExtra("port");

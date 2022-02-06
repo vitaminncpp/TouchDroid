@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">MouseRemote</string>
+    <string name="enterIp">Enter IP of Destination</string>
+    <string name="enterPort">Enter Port of Destination Server</string>
+    <string name="btnConnect">Connect</string>
+    <string name="waiting">Waiting…</string>
+    <string name="leftBtn">Left\nButton</string>
+    <string name="rightBtn">Right\nButton</string>
+    <string name="hrLine">__________</string>
+    <string name="wheelString">Scroll Wheel</string>
 </resources>

@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <ToggleButton
-        android:id="@+id/toggleButton2"
+        android:id="@+id/toggleBtn_Wifi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="100dp"

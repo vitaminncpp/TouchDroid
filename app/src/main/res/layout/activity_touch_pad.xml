@@ -36,7 +36,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textColor="@color/white"
-            android:background="colorSecondary"
+            android:background="@color/primary_dark"
             android:text="@string/leftBtn" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -131,7 +131,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textColor="@color/white"
-            android:background="colorSecondary"
+            android:background="@color/primary_dark"
             android:text="@string/rightBtn"/>
     </LinearLayout>
 </LinearLayout>

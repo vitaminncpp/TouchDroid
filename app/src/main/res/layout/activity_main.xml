@@ -7,11 +7,19 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/button"
+    <ToggleButton
+        android:id="@+id/toggleButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="158dp"
-        tools:layout_editor_absoluteY="79dp" />
+        android:layout_marginBottom="100dp"
+        android:background="@color/primary"
+        android:fontFamily="@font/cabin"
+        android:padding="8dp"
+        android:textAllCaps="false"
+        android:textOff="@string/turn_wifi_on"
+        android:textOn="@string/turn_wifi_off"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

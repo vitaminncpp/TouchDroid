@@ -40,9 +40,10 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/wheel"
-            android:layout_width="100dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:background="@color/teal_700">
 
             <TextView
                 android:id="@+id/textView4"
@@ -115,6 +116,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="50dp"
+                android:gravity="center_horizontal"
                 android:text="@string/wheelString"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"

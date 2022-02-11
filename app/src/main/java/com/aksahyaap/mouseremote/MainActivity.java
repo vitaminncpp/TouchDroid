@@ -1,35 +1,42 @@
 package com.aksahyaap.mouseremote;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
+import android.annotation.SuppressLint;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ToggleButton;
+import android.widget.ImageButton;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.content.res.AppCompatResources;
+import androidx.core.graphics.drawable.DrawableCompat;
 
 public class MainActivity extends AppCompatActivity {
-
-    ToggleButton toggleBtn_Wifi;
+    WifiManager wifiManager;
+    ImageButton imgBtn_Wifi;
+    EditText editText_inputIP;
+    ImageButton imgBtn_ManualIP;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        toggleBtn_Wifi = findViewById(R.id.toggleBtn_Wifi);
+        imgBtn_Wifi = findViewById(R.id.imgBtn_Wifi);
+        editText_inputIP = findViewById(R.id.editText_inputIP);
+        imgBtn_ManualIP = findViewById(R.id.imgBtn_ManualIP);
 
-        toggleBtn_Wifi.setOnClickListener(view -> {
-            if(toggleBtn_Wifi.isChecked()){
-                Log.d("!!!","on");
-            }
-            if(!toggleBtn_Wifi.isChecked()){
-                Log.d("!!!","off");
-            }
+        imgBtn_Wifi.setOnClickListener(view -> {
+            changeWIfiColor();
         });
+    }
 
-
+    public void changeWIfiColor(){
+        Drawable unwrappedDrawable = AppCompatResources.getDrawable(getApplicationContext(), R.drawable.ic_baseline_wifi_enable);
+        assert unwrappedDrawable != null;
+        Drawable wrappedDrawable = DrawableCompat.wrap(unwrappedDrawable);
+        DrawableCompat.setTint(DrawableCompat.wrap(unwrappedDrawable), getResources().getColor(R.color.grey));
     }
 }

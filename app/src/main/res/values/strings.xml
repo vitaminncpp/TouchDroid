@@ -10,4 +10,5 @@
     <string name="wheelString">Scroll Wheel</string>
     <string name="turn_wifi_on">Turn Wifi On</string>
     <string name="turn_wifi_off">Turn Wifi Off</string>
+    <string name="enter_manual_ip">Enter Manual IP</string>
 </resources>

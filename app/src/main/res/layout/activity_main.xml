@@ -7,19 +7,53 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <ToggleButton
-        android:id="@+id/toggleBtn_Wifi"
+    <ImageButton
+        android:id="@+id/imgBtn_Wifi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
-        android:background="@color/primary"
-        android:fontFamily="@font/cabin"
-        android:padding="8dp"
-        android:textAllCaps="false"
-        android:textOff="@string/turn_wifi_on"
-        android:textOn="@string/turn_wifi_off"
-        android:textSize="20sp"
+        android:layout_marginTop="250dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_wifi_enable"
+        tools:ignore="ContentDescription" />
+
+    <EditText
+        android:id="@+id/editText_inputIP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="25dp"
+        android:ems="10"
+        android:paddingStart="10dp"
+        android:hint="@string/enter_manual_ip"
+        android:inputType="textPersonName"
+        android:backgroundTint="@color/primary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgBtn_Wifi"
+        android:autofillHints="false"
+        tools:ignore="RtlSymmetry" />
+
+    <ImageButton
+        android:id="@+id/imgBtn_ManualIP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/enter_ip_btn"
+        android:paddingStart="10dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgBtn_Wifi"
+        app:layout_constraintVertical_bias="0.494"
+        app:srcCompat="@drawable/ic_baseline_double_arrow_24"
+        tools:ignore="ContentDescription" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

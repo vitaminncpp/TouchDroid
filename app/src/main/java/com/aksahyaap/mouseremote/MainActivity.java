@@ -2,8 +2,8 @@ package com.aksahyaap.mouseremote;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.TextView;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,7 +12,7 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 
 public class MainActivity extends AppCompatActivity {
-    TextView textView_waitingForCon;
+    ImageView imageView_wifiIcon;
     int CON_PORT = 5560;
     int WORK_PORT = 5559;
 
@@ -21,7 +21,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        textView_waitingForCon = findViewById(R.id.textView_waitingForCon);
+        imageView_wifiIcon = findViewById(R.id.imageView_wifiIcon);
+        imageView_wifiIcon.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in_fade_out));
+
         Connecting con = new Connecting();
         Thread conThread = new Thread(con);
         conThread.start();

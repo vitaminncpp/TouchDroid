@@ -7,14 +7,52 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-
-    <TextView
-        android:id="@+id/textView_waitingForCon"
+    <ImageView
+        android:id="@+id/imageView_wifiIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Loading"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Title"
+        app:srcCompat="@drawable/ic_baseline_wifi"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/textView_Copyright"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:textColor="@color/primary_dark"
+        android:text="@string/skrinternationals"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:rotation="0"
+        android:rotationX="0"
+        android:rotationY="0"
+        android:text="@string/app_name"
+        android:textSize="50sp"
+        android:textColor="@color/primary_dark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="@string/instruction"
+        android:lines="5"
+        app:layout_constraintBottom_toTopOf="@+id/textView_Copyright"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

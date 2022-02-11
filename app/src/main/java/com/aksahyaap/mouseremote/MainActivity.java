@@ -1,23 +1,26 @@
 package com.aksahyaap.mouseremote;
 
-import android.annotation.SuppressLint;
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
+import android.content.IntentFilter;
 import android.net.wifi.WifiManager;
+import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
 
 public class MainActivity extends AppCompatActivity {
     WifiManager wifiManager;
+    WifiP2pManager mManager;
+    WifiP2pManager.Channel mChannel;
+    BroadcastReceiver mReceiver;
+    IntentFilter mIntentFilter;
+
     ImageButton imgBtn_Wifi;
     EditText editText_inputIP;
     ImageButton imgBtn_ManualIP;
@@ -27,10 +30,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         imgBtn_Wifi = findViewById(R.id.imgBtn_Wifi);
         editText_inputIP = findViewById(R.id.editText_inputIP);
         imgBtn_ManualIP = findViewById(R.id.imgBtn_ManualIP);
+
+        wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        mManager = (WifiP2pManager) getApplicationContext().getSystemService(Context.WIFI_P2P_SERVICE);
+        mChannel = mManager.initialize(this, getMainLooper(),null);
+
+        mReceiver = new WifiBroadcastReceiver(mManager, mChannel, this);
+
+        mIntentFilter = new IntentFilter();
+        mIntentFilter.addAction(WifiP2pManager.WIFI_P2P_CONNECTION_CHANGED_ACTION);
+        mIntentFilter.addAction(WifiP2pManager.WIFI_P2P_PEERS_CHANGED_ACTION);
+        mIntentFilter.addAction(WifiP2pManager.WIFI_P2P_CONNECTION_CHANGED_ACTION);
+        mIntentFilter.addAction(WifiP2pManager.WIFI_P2P_THIS_DEVICE_CHANGED_ACTION);
 
         init();
 
@@ -66,5 +80,17 @@ public class MainActivity extends AppCompatActivity {
             DrawableCompat.setTint(DrawableCompat.wrap(imgBtn_Wifi.getDrawable()), ContextCompat.getColor(getApplicationContext(), R.color.grey));
 
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        registerReceiver(mReceiver, mIntentFilter);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(mReceiver);
     }
 }

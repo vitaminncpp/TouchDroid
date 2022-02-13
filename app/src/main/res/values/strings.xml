@@ -8,4 +8,10 @@
     <string name="rightBtn">Right\nButton</string>
     <string name="hrLine">__________</string>
     <string name="wheelString">Scroll Wheel</string>
+    <string name="turn_wifi_on">Turn Wifi On</string>
+    <string name="turn_wifi_off">Turn Wifi Off</string>
+    <string name="enter_manual_ip">Enter Manual IP</string>
+    <string name="IPinput">_ _ _ . _ _ _ . _ _ _ . _ _ _</string>
+    <string name="skrinternationals">©SKRinternationals</string>
+    <string name="instruction">Waiting for <b>server.exe</b> to run on Host device… <br/> Download it from <br/> <i>https://blahblah.blah.blah</i></string>
 </resources>

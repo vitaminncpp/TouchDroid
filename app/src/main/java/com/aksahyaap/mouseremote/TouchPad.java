@@ -34,7 +34,6 @@ public class TouchPad extends AppCompatActivity {
 
         String ip = getIntent().getStringExtra("ip");
         String port = getIntent().getStringExtra("port");
-        Log.i("IP and Port", ip + "   " + port);
 
         ProgressDialog dialog = new ProgressDialog(this);
         dialog.show();
@@ -46,7 +45,6 @@ public class TouchPad extends AppCompatActivity {
         TextView txt_ip_port = findViewById(R.id.txt_ip_port);
 
         txt_ip_port.setText("Connected to "+ip+" : "+port);
-
 
         new Thread(new clientThread(ip, port)).start();
 
@@ -170,5 +168,4 @@ public class TouchPad extends AppCompatActivity {
             }
         }
     }
-
 }

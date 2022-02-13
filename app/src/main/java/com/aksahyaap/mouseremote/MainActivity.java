@@ -1,36 +1,54 @@
 package com.aksahyaap.mouseremote;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
 
 public class MainActivity extends AppCompatActivity {
+    ImageView imageView_wifiIcon;
+    int CON_PORT = 5560;
+    int WORK_PORT = 5559;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        EditText mainTxtIP = findViewById(R.id.mainTxtIP);
-        EditText mainTxtPort = findViewById(R.id.mainNumPort);
 
+        imageView_wifiIcon = findViewById(R.id.imageView_wifiIcon);
+        imageView_wifiIcon.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in_fade_out));
 
-        Button button = findViewById(R.id.btnConnect);
+        Connecting con = new Connecting();
+        Thread conThread = new Thread(con);
+        conThread.start();
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String ip = mainTxtIP.getText().toString().trim();
-                String port = mainTxtPort.getText().toString().trim();
-                Intent intent = new Intent(MainActivity.this, TouchPad.class);
-                intent.putExtra("ip", ip);
-                intent.putExtra("port", port);
-
-                startActivity(intent);
-            }
-        });
     }
+
+    public class Connecting implements Runnable {
+        public void run() {
+            try{
+                DatagramSocket serverSocket = new DatagramSocket(CON_PORT);
+                byte[] receiveData = new byte[1024];
+
+                DatagramPacket receivePacket = new DatagramPacket(receiveData,receiveData.length);
+                serverSocket.receive(receivePacket);
+                InetAddress IPAddress = receivePacket.getAddress();
+
+                Intent myIntent = new Intent(MainActivity.this, TouchPad.class);
+                myIntent.putExtra("ip", IPAddress.toString().substring(1));
+                myIntent.putExtra("port", String.valueOf(WORK_PORT));
+                startActivity(myIntent);
+
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
+
 }

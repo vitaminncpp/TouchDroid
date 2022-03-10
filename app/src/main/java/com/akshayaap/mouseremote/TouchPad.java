@@ -1,4 +1,4 @@
-package com.aksahyaap.mouseremote;
+package com.akshayaap.mouseremote;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
@@ -11,9 +11,15 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+
+import com.akshayaap.mouseremote.R;
+
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.Socket;
+import java.net.SocketException;
+import java.net.UnknownHostException;
 
 public class TouchPad extends AppCompatActivity {
     private int X = 0;
@@ -22,9 +28,8 @@ public class TouchPad extends AppCompatActivity {
     private int Yp = 0;
     private int dx = 0;
     private int dy = 0;
-    private Socket client;
+    Sender sender;
 
-    public DataOutputStream dos;
 
     @SuppressLint({"ClickableViewAccessibility", "SetTextI18n", "DefaultLocale"})
     @Override
@@ -33,10 +38,15 @@ public class TouchPad extends AppCompatActivity {
         setContentView(R.layout.activity_touch_pad);
 
         String ip = getIntent().getStringExtra("ip");
-        String port = getIntent().getStringExtra("port");
+        String port = Integer.toString(Config.SERVER_PORT);
 
-        ProgressDialog dialog = new ProgressDialog(this);
-        dialog.show();
+        try {
+            sender=new Sender(InetAddress.getByName(ip),Config.SERVER_PORT );
+        } catch (SocketException e) {
+            e.printStackTrace();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
 
         ConstraintLayout layout = findViewById(R.id.touchpad);
         ConstraintLayout wheel = findViewById(R.id.wheel);
@@ -46,9 +56,7 @@ public class TouchPad extends AppCompatActivity {
 
         txt_ip_port.setText("Connected to "+ip+" : "+port);
 
-        new Thread(new clientThread(ip, port)).start();
 
-        dialog.dismiss();
 
         layout.setOnTouchListener((view, motionEvent) -> {
             int eventType = motionEvent.getActionMasked();
@@ -64,7 +72,7 @@ public class TouchPad extends AppCompatActivity {
                     dx = X - Xp;
                     dy = Y - Yp;
                     if (Xp != 0 && Yp != 0)
-                        new Thread(new senderThread(String.format("%6d    %6d    M      end",dx,dy))).start();
+                        sender.send(String.format( "%6d    %6d    M      end",dx,dy));
 
                     Xp = X;
                     Yp = Y;
@@ -83,10 +91,12 @@ public class TouchPad extends AppCompatActivity {
             int type=motionEvent.getActionMasked();
             switch(type){
                 case MotionEvent.ACTION_DOWN:
-                    new Thread(new senderThread("     0         0    L          end")).start();
+                    sender.send("     0         0    L          end");
+
                     break;
                 case MotionEvent.ACTION_UP:
-                    new Thread(new senderThread("     0         0    l      end")).start();
+                    sender.send("     0         0    l      end");
+
                     break;
             }
 
@@ -100,10 +110,12 @@ public class TouchPad extends AppCompatActivity {
             int type=motionEvent.getActionMasked();
             switch(type){
                 case MotionEvent.ACTION_DOWN:
-                    new Thread(new senderThread("     0         0    R      end")).start();
+                    sender.send("     0         0    R      end");
+
                     break;
                 case MotionEvent.ACTION_UP:
-                    new Thread(new senderThread("     0         0    r      end")).start();
+                    sender.send("     0         0    r      end");
+
                     break;
             }
             return true;
@@ -120,7 +132,8 @@ public class TouchPad extends AppCompatActivity {
                     Y = (int) motionEvent.getY();
                     dy = Y - Yp;
                     if (Yp != 0)
-                        new Thread(new senderThread(String.format("%6d         0    W      end", dy))).start();
+                        sender.send(String.format("%6d         0    W      end", dy));
+
                     Yp = Y;
                     break;
                 default:
@@ -130,42 +143,4 @@ public class TouchPad extends AppCompatActivity {
         });
     }
 
-
-    class clientThread implements Runnable {
-        String ip;
-        String port;
-
-        clientThread(String ip, String port) {
-            this.ip = ip;
-            this.port = port;
-        }
-
-        public void run() {
-            try {
-                client = new Socket(this.ip, Integer.parseInt(this.port));
-                dos = new DataOutputStream(client.getOutputStream());
-
-                //new Thread(new senderThread("str1")).start();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    class senderThread implements Runnable {
-        String str;
-
-        senderThread(String str) {
-            this.str = str;
-        }
-
-        public void run() {
-            try {
-                dos.writeBytes(str );
-                Log.i("String", String.valueOf(str.length()));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
 }

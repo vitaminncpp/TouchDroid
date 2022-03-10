@@ -1,4 +1,4 @@
-package com.aksahyaap.mouseremote;
+package com.akshayaap.mouseremote;
 
 import android.content.Context;
 

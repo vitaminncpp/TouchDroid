@@ -57,8 +57,11 @@ public class TouchPad extends AppCompatActivity {
                     Y = (int) motionEvent.getY();
                     dx = X - Xp;
                     dy = Y - Yp;
-                    if (Xp != 0 && Yp != 0)
-                        sender.send(String.format("%6d    %6d    M      end", dx, dy));
+                    if (Xp != 0 && Yp != 0) {
+                        event.setDwFlags(Event.MOUSEEVENTF_MOVE);
+                        event.setXY(dx, dy);
+                        sender.send(event.toString());
+                    }
                     Xp = X;
                     Yp = Y;
                     break;
@@ -73,10 +76,14 @@ public class TouchPad extends AppCompatActivity {
             int type = motionEvent.getActionMasked();
             switch (type) {
                 case MotionEvent.ACTION_DOWN:
-                    sender.send("     0         0    L          end");
+                    event.setDwFlags(Event.MOUSEEVENTF_LEFTDOWN);
+                    event.setXY(0,0);
+                    sender.send(event.toString());
                     break;
                 case MotionEvent.ACTION_UP:
-                    sender.send("     0         0    l      end");
+                    event.setDwFlags(Event.MOUSEEVENTF_LEFTUP);
+                    event.setXY(0,0);
+                    sender.send(event.toString());
                     break;
             }
             return true;
@@ -87,10 +94,14 @@ public class TouchPad extends AppCompatActivity {
             int type = motionEvent.getActionMasked();
             switch (type) {
                 case MotionEvent.ACTION_DOWN:
-                    sender.send("     0         0    R      end");
+                    event.setDwFlags(Event.MOUSEEVENTF_RIGHTDOWN);
+                    event.setXY(0,0);
+                    sender.send(event.toString());
                     break;
                 case MotionEvent.ACTION_UP:
-                    sender.send("     0         0    r      end");
+                    event.setDwFlags(Event.MOUSEEVENTF_RIGHTUP);
+                    event.setXY(0,0);
+                    sender.send(event.toString());
                     break;
             }
             return true;
@@ -105,8 +116,11 @@ public class TouchPad extends AppCompatActivity {
                 case MotionEvent.ACTION_MOVE:
                     Y = (int) motionEvent.getY();
                     dy = Y - Yp;
-                    if (Yp != 0)
-                        sender.send(String.format("%6d         0    W      end", dy));
+                    if (Yp != 0){
+                        event.setDwFlags(Event.MOUSEEVENTF_WHEEL);
+                        event.setMouseData(dy);
+                        sender.send(event.toString());
+                    }
                     Yp = Y;
                     break;
                 default:
@@ -114,5 +128,6 @@ public class TouchPad extends AppCompatActivity {
             }
             return true;
         });
+        event.setType(Event.INPUT_MOUSE);
     }
 }

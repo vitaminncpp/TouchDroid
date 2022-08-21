@@ -16,11 +16,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MouseRemote">
         <activity
-            android:name="com.akshayaap.mouseremote.TouchPad"
-            android:exported="true">
-        </activity>
+            android:name=".KeyBoard"
+            android:exported="false" />
         <activity
-            android:name="com.akshayaap.mouseremote.MainActivity"
+            android:name=".TouchPad"
+            android:exported="true"></activity>
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,6 +35,5 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
-
 
 </manifest>

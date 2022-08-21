@@ -32,13 +32,14 @@
         <entry key="app/src/main/res/drawable/ic_mouse_top_view_svgrepo_com.xml" value="0.163" />
         <entry key="app/src/main/res/drawable/ic_mouseremote.xml" value="0.163" />
         <entry key="app/src/main/res/drawable/ic_port.xml" value="0.163" />
+        <entry key="app/src/main/res/layout/activity_key_board.xml" value="0.33645833333333336" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_touch_pad.xml" value="0.33" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.163" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_X" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17_PREVIEW" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

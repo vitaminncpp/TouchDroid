@@ -13,5 +13,5 @@
     <string name="enter_manual_ip">Enter Manual IP</string>
     <string name="IPinput">_ _ _ . _ _ _ . _ _ _ . _ _ _</string>
     <string name="skrinternationals">©SKRinternationals</string>
-    <string name="instruction">Waiting for <b>MouseRemoteServer.exe</b> to run on Host device… <br/> Download it from <br/> https://github.com/Akshayaap/MouseRemoteServer</string>
+    <string name="instruction">Waiting for <b>MouseRemoteServer.exe</b> to run on Host device… <br /> Download it from <br /> https://github.com/Akshayaap/MouseRemoteServer</string>
 </resources>

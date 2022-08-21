@@ -7,7 +7,6 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.akshayaap.mouseremote.R;
 
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;

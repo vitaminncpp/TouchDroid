@@ -1,0 +1,14 @@
+{
+  "type": "DWORD",
+
+  "dx": "DWORD",
+  "dy": "DWORD",
+  "mouseData": "DWORD",
+
+  "wVk": "WORD",
+  "wScan": "WORD",
+
+  "dwFlags": "DWORD",
+  "time": "DWORD",
+  "dwExtraInfo": "DWORD"
+}

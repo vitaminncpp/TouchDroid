@@ -52,6 +52,9 @@ public class TouchPad extends AppCompatActivity {
                     Yp = 0;
                     break;
 
+                case MotionEvent.ACTION_DOWN:
+                    break;
+
                 case MotionEvent.ACTION_MOVE:
                     X = (int) motionEvent.getX();
                     Y = (int) motionEvent.getY();
@@ -77,12 +80,12 @@ public class TouchPad extends AppCompatActivity {
             switch (type) {
                 case MotionEvent.ACTION_DOWN:
                     event.setDwFlags(Event.MOUSEEVENTF_LEFTDOWN);
-                    event.setXY(0,0);
+                    event.setXY(0, 0);
                     sender.send(event.toString());
                     break;
                 case MotionEvent.ACTION_UP:
                     event.setDwFlags(Event.MOUSEEVENTF_LEFTUP);
-                    event.setXY(0,0);
+                    event.setXY(0, 0);
                     sender.send(event.toString());
                     break;
             }
@@ -95,12 +98,12 @@ public class TouchPad extends AppCompatActivity {
             switch (type) {
                 case MotionEvent.ACTION_DOWN:
                     event.setDwFlags(Event.MOUSEEVENTF_RIGHTDOWN);
-                    event.setXY(0,0);
+                    event.setXY(0, 0);
                     sender.send(event.toString());
                     break;
                 case MotionEvent.ACTION_UP:
                     event.setDwFlags(Event.MOUSEEVENTF_RIGHTUP);
-                    event.setXY(0,0);
+                    event.setXY(0, 0);
                     sender.send(event.toString());
                     break;
             }
@@ -112,16 +115,25 @@ public class TouchPad extends AppCompatActivity {
             switch (type) {
                 case MotionEvent.ACTION_UP:
                     Yp = 0;
+                    Xp = 0;
                     break;
                 case MotionEvent.ACTION_MOVE:
                     Y = (int) motionEvent.getY();
                     dy = Y - Yp;
-                    if (Yp != 0){
+                    dx = X - Xp;
+
+                    if (Yp != 0) {
                         event.setDwFlags(Event.MOUSEEVENTF_WHEEL);
                         event.setMouseData(dy);
                         sender.send(event.toString());
                     }
+                    if (Xp != 0) {
+                        event.setDwFlags(Event.MOUSEEVENTF_HWHEEL);
+                        event.setMouseData(dx);
+                        sender.send(event.toString());
+                    }
                     Yp = Y;
+                    Xp = X;
                     break;
                 default:
                     break;

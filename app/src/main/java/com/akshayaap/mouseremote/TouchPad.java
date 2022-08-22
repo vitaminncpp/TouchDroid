@@ -2,6 +2,7 @@ package com.akshayaap.mouseremote;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.Button;
 import android.widget.TextView;
@@ -39,6 +40,7 @@ public class TouchPad extends AppCompatActivity {
         }
         ConstraintLayout layout = findViewById(R.id.touchpad);
         ConstraintLayout wheel = findViewById(R.id.wheel);
+        ConstraintLayout hWheel = findViewById(R.id.hWheel);
         Button btnLeft = findViewById(R.id.btnLeft);
         Button btnRight = findViewById(R.id.btnRight);
         TextView txt_ip_port = findViewById(R.id.txt_ip_port);
@@ -115,24 +117,37 @@ public class TouchPad extends AppCompatActivity {
             switch (type) {
                 case MotionEvent.ACTION_UP:
                     Yp = 0;
-                    Xp = 0;
                     break;
                 case MotionEvent.ACTION_MOVE:
                     Y = (int) motionEvent.getY();
                     dy = Y - Yp;
-                    dx = X - Xp;
-
                     if (Yp != 0) {
                         event.setDwFlags(Event.MOUSEEVENTF_WHEEL);
                         event.setMouseData(dy);
+
                         sender.send(event.toString());
                     }
+                    Yp = Y;
+                    break;
+                default:
+                    break;
+            }
+            return true;
+        });
+        hWheel.setOnTouchListener((view, motionEvent) -> {
+            int type = motionEvent.getActionMasked();
+            switch (type) {
+                case MotionEvent.ACTION_UP:
+                    Xp = 0;
+                    break;
+                case MotionEvent.ACTION_MOVE:
+                    X = (int) motionEvent.getX();
+                    dx = X - Xp;
                     if (Xp != 0) {
                         event.setDwFlags(Event.MOUSEEVENTF_HWHEEL);
                         event.setMouseData(dx);
                         sender.send(event.toString());
                     }
-                    Yp = Y;
                     Xp = X;
                     break;
                 default:

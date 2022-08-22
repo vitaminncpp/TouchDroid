@@ -22,13 +22,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="160dp"
+        android:background="@color/design_default_color_error"
         android:backgroundTint="@color/primary_dark"
-        android:background="@color/primary_dark"
         android:orientation="horizontal">
 
         <Button
@@ -36,24 +37,36 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textColor="@color/white"
             android:background="@color/primary_dark"
-            android:text="@string/leftBtn" />
+            android:text="@string/leftBtn"
+            android:textColor="@color/white" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/wheel"
-            android:layout_width="111dp"
+            android:layout_width="100dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/primary" />
+            android:background="@color/primary">
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Button
             android:id="@+id/btnRight"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textColor="@color/white"
             android:background="@color/primary_dark"
-            android:text="@string/rightBtn"/>
+            android:text="@string/rightBtn"
+            android:textColor="@color/white" />
+
     </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/hWheel"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="#D24C4C">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </LinearLayout>

@@ -23,18 +23,25 @@
         <entry key="..\:/Users/chunn/AndroidStudioProjects/MouseRemote/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3638888888888889" />
         <entry key="..\:/Users/chunn/AndroidStudioProjects/MouseRemote/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3638888888888889" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3494791666666667" />
+        <entry key="app/src/main/res/drawable/buttton_backgroun.xml" value="0.271" />
+        <entry key="app/src/main/res/drawable/buttton_background.xml" value="0.271" />
         <entry key="app/src/main/res/drawable/custom.xml" value="0.3494791666666667" />
+        <entry key="app/src/main/res/drawable/custom_input.xml" value="0.271" />
         <entry key="app/src/main/res/drawable/ic_baseline_computer_24.xml" value="0.163" />
         <entry key="app/src/main/res/drawable/ic_baseline_double_arrow_24.xml" value="0.163" />
         <entry key="app/src/main/res/drawable/ic_baseline_wifi.xml" value="0.163" />
+        <entry key="app/src/main/res/drawable/ic_ip.xml" value="0.271" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.271" />
         <entry key="app/src/main/res/drawable/ic_mouse_svgrepo_com.xml" value="0.163" />
         <entry key="app/src/main/res/drawable/ic_mouse_svgrepo_com__1_.xml" value="0.163" />
         <entry key="app/src/main/res/drawable/ic_mouse_top_view_svgrepo_com.xml" value="0.163" />
         <entry key="app/src/main/res/drawable/ic_mouseremote.xml" value="0.163" />
         <entry key="app/src/main/res/drawable/ic_port.xml" value="0.163" />
+        <entry key="app/src/main/res/drawable/touchpad_background.xml" value="0.3375" />
         <entry key="app/src/main/res/layout/activity_key_board.xml" value="0.33645833333333336" />
+        <entry key="app/src/main/res/layout/activity_keyboard.xml" value="0.32155797101449274" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/activity_touch_pad.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_touch_pad.xml" value="0.18" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.163" />
       </map>
     </option>

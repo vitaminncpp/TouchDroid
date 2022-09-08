@@ -1,5 +1,5 @@
 # MouseRemote
-A MouseRemote project was initialted as the solution of controlling computer via Local Network. MouseRemote is Android Application which emulates the behaviour of touchpad of Laptop computer. [MouseRemoteServer](https://wwww.github.com/Akshayaap/MouseRemoteServer) is required to be run in Computer in order to control Computer Remotly.
+A MouseRemote project was initialted as the solution of controlling computer via Local Network. MouseRemote is Android Application which emulates the behaviour of touchpad of Laptop computer. [MouseRemoteServer](https://www.github.com/Akshayaap/MouseRemoteServer) is required to be run in Computer in order to control Computer Remotly.
   
   ## Table of Content
   - [Technologies](#technologies)

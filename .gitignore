@@ -33,3 +33,4 @@ google-services.json
 *.hprof
 
 git-log.sh
+.vscode

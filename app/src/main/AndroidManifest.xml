@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.aksahyaap.mouseremote">
+    package="com.akshayaap.mouseremote" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -10,18 +10,20 @@
 
     <application
         android:allowBackup="false"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_mouseremote"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/ic_mouseremote"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MouseRemote">
+        android:theme="@style/Theme.MouseRemote" >
+        <activity
+            android:name=".Keyboard"
+            android:exported="false" />
         <activity
             android:name=".TouchPad"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,6 +35,5 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
-
 
 </manifest>

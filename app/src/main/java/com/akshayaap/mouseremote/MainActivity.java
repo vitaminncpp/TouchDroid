@@ -1,4 +1,4 @@
-package com.aksahyaap.mouseremote;
+package com.akshayaap.mouseremote;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,14 +7,14 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
 public class MainActivity extends AppCompatActivity {
     ImageView imageView_wifiIcon;
-    int CON_PORT = 5560;
-    int WORK_PORT = 5559;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
     public class Connecting implements Runnable {
         public void run() {
             try{
-                DatagramSocket serverSocket = new DatagramSocket(CON_PORT);
-                byte[] receiveData = new byte[1024];
+                DatagramSocket serverSocket = new DatagramSocket(Config.ECHO_PORT);
+                byte[] receiveData = new byte[4];
 
                 DatagramPacket receivePacket = new DatagramPacket(receiveData,receiveData.length);
                 serverSocket.receive(receivePacket);
@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent myIntent = new Intent(MainActivity.this, TouchPad.class);
                 myIntent.putExtra("ip", IPAddress.toString().substring(1));
-                myIntent.putExtra("port", String.valueOf(WORK_PORT));
                 startActivity(myIntent);
 
             } catch (Exception e){

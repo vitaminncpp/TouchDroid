@@ -19,7 +19,7 @@ A MouseRemote project was initialted as the solution of controlling computer via
   
   ## Setup
   ### For Users
-  - Download the zip file from the [MousteRemoteServer](https://wwww.github.com/Akshayaap/MouseRemoteServer).
+  - Download the zip file from the [MouseRemoteServer](https://wwww.github.com/Akshayaap/MouseRemoteServer).
   - Install android [MouseRemote](https://wwww.github.com/Akshayaap/MouseRemote) apk.
   - Extract MouseRemoteServer.zip at your favorite location in your Windows PC.
   - Run `ControlPanel.exe`.

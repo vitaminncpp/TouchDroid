@@ -9,8 +9,8 @@ android {
         applicationId "com.akshayaap.mouseremote"
         minSdk 21
         targetSdk 32
-        versionCode 2
-        versionName "1.4.1"
+        versionCode 4
+        versionName "1.4.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

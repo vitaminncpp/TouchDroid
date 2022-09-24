@@ -2,11 +2,13 @@ package com.akshayaap.mouseremote;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.animation.AnimationUtils;
+import android.text.Layout;
+import android.view.View;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -21,8 +23,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        imageView_wifiIcon = findViewById(R.id.imageView_wifiIcon);
-        imageView_wifiIcon.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in_fade_out));
 
         Connecting con = new Connecting();
         Thread conThread = new Thread(con);
@@ -32,11 +32,12 @@ public class MainActivity extends AppCompatActivity {
 
     public class Connecting implements Runnable {
         public void run() {
-            try{
+            try {
                 DatagramSocket serverSocket = new DatagramSocket(Config.ECHO_PORT);
                 byte[] receiveData = new byte[4];
 
-                DatagramPacket receivePacket = new DatagramPacket(receiveData,receiveData.length);
+                DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
+
                 serverSocket.receive(receivePacket);
                 InetAddress IPAddress = receivePacket.getAddress();
 
@@ -44,9 +45,17 @@ public class MainActivity extends AppCompatActivity {
                 myIntent.putExtra("ip", IPAddress.toString().substring(1));
                 startActivity(myIntent);
 
-            } catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    public class CustomViewHolder extends RecyclerView.ViewHolder {
+        private Layout item;
+
+        public CustomViewHolder(@NonNull View itemView) {
+            super(itemView);
         }
     }
 

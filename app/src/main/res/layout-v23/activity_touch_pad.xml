@@ -40,6 +40,7 @@
             android:layout_width="150dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/buttton_background"
             android:foreground="@drawable/buttton_background"
             android:text="Button" />
 

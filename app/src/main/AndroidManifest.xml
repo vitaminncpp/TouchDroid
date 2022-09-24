@@ -17,7 +17,8 @@
         android:theme="@style/Theme.MouseRemote" >
         <activity
             android:name=".Keyboard"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".TouchPad"
             android:exported="true" />

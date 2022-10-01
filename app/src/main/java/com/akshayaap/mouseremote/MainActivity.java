@@ -23,11 +23,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         Connecting con = new Connecting();
         Thread conThread = new Thread(con);
         conThread.start();
-
     }
 
     public class Connecting implements Runnable {

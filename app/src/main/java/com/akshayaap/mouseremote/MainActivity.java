@@ -15,13 +15,14 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 
 public class MainActivity extends AppCompatActivity {
-    ImageView imageView_wifiIcon;
-
+    ImageView imageView_wifiLogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        imageView_wifiLogo = findViewById(R.id.imageView_wifiLogo);
 
         Connecting con = new Connecting();
         Thread conThread = new Thread(con);

@@ -12,6 +12,6 @@
     <string name="turn_wifi_off">Turn Wifi Off</string>
     <string name="enter_manual_ip">Enter Manual IP</string>
     <string name="IPinput">_ _ _ . _ _ _ . _ _ _ . _ _ _</string>
-    <string name="skrinternationals">Partnered with ©SKRinternationals</string>
+    <string name="skrinternationals">Powered BY <b>©SKRinternationals</b></string>
     <string name="instruction">Waiting for <b>MouseRemoteServer.exe</b> to run on Host device… <br /> Download it from <br /> https://github.com/Akshayaap/MouseRemoteServer</string>
 </resources>

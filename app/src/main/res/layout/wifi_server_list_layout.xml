@@ -18,12 +18,15 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView_platformTitle"
+                android:id="@+id/textView_wifiNameTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingHorizontal="24sp"
-                android:paddingVertical="24sp"
+                android:paddingHorizontal="16sp"
+                android:paddingVertical="16sp"
                 android:text="@string/waiting"
+                android:background="@color/primary"
+                android:textColor="@color/white"
+                android:textStyle="bold"
                 android:textAlignment="textStart"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"

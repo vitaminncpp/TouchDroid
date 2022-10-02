@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,7 +33,7 @@ public class WifiListAdapter extends RecyclerView.Adapter<WifiListAdapter.WifiVi
 
     @Override
     public void onBindViewHolder(@NonNull WifiViewHolder holder, int position) {
-
+        holder.textView_wifiNameTitle.setText(wifiList.get(position));
     }
 
     @Override
@@ -40,14 +41,30 @@ public class WifiListAdapter extends RecyclerView.Adapter<WifiListAdapter.WifiVi
         return wifiList.size();
     }
 
+
     public static class WifiViewHolder extends RecyclerView.ViewHolder {
+        TextView textView_wifiNameTitle;
+
         public WifiViewHolder(@NonNull View itemView, OnItemClickListener clickListener) {
             super(itemView);
+            textView_wifiNameTitle = itemView.findViewById(R.id.textView_wifiNameTitle);
 
+            itemView.setOnClickListener(view -> {
+                if(clickListener != null){
+                    int position = getAdapterPosition();
+                    if(position != RecyclerView.NO_POSITION){
+                        clickListener.onItemClick(position);
+                    }
+                }
+            });
         }
     }
 
     public interface OnItemClickListener{
         void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        clickListener = listener;
     }
 }

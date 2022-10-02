@@ -3,6 +3,7 @@ package com.akshayaap.mouseremote;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Layout;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -10,15 +11,20 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.mouseremote.WifiListAdapter;
 
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     ImageView imageView_wifiLogo;
     RecyclerView recyclerView_serverList;
+    ArrayList<String> tempWifiList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +38,22 @@ public class MainActivity extends AppCompatActivity {
         imageView_wifiLogo.startAnimation(animation);
 
 //        NOTE: Make Wifi Logo invisible and Make Recycler view Visible when Connections are found
+        imageView_wifiLogo.setVisibility(View.GONE);
+        recyclerView_serverList.setVisibility(View.VISIBLE);
+
+        tempWifiList = new ArrayList<>();
+        tempWifiList.add("asd");
+        tempWifiList.add("zxc");
+        tempWifiList.add("qwe");
+
+        WifiListAdapter wifiListAdapter = new WifiListAdapter(this, tempWifiList);
+        recyclerView_serverList.setAdapter(wifiListAdapter);
+        recyclerView_serverList.setLayoutManager(new LinearLayoutManager(this));
+
+        wifiListAdapter.setOnItemClickListener(position -> {
+//        NOTE: connect to the server here
+            Log.d("!!!","clicked");
+        });
 
         Connecting con = new Connecting();
         Thread conThread = new Thread(con);

@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in_fade_out);
         imageView_wifiLogo.startAnimation(animation);
 
+//        NOTE: ADD FUNCTIONALITY HERE!!
+/*
 //        NOTE: Make Wifi Logo invisible and Make Recycler view Visible when Connections are found
         imageView_wifiLogo.setVisibility(View.GONE);
         recyclerView_serverList.setVisibility(View.VISIBLE);
@@ -54,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 //        NOTE: connect to the server here
             Log.d("!!!","clicked");
         });
-
+*/
         Connecting con = new Connecting();
         Thread conThread = new Thread(con);
         conThread.start();

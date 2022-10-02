@@ -54,9 +54,6 @@ public class TouchPad extends AppCompatActivity {
                     Yp = 0;
                     break;
 
-                case MotionEvent.ACTION_DOWN:
-                    break;
-
                 case MotionEvent.ACTION_MOVE:
                     X = (int) motionEvent.getX();
                     Y = (int) motionEvent.getY();

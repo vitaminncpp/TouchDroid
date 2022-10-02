@@ -24,7 +24,7 @@
                 android:layout_height="50dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
-                android:background="@drawable/buttton_background"
+                android:background="@drawable/button_background"
                 android:drawablePadding="0dp"
                 android:text="Q" />
 
@@ -34,7 +34,7 @@
                 android:layout_height="50dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
-                android:background="@drawable/buttton_background"
+                android:background="@drawable/button_background"
                 android:drawablePadding="0dp"
                 android:text="Q" />
 
@@ -44,7 +44,7 @@
                 android:layout_height="50dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
-                android:background="@drawable/buttton_background"
+                android:background="@drawable/button_background"
                 android:drawablePadding="0dp"
                 android:text="Q" />
 
@@ -54,7 +54,7 @@
                 android:layout_height="50dp"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
-                android:background="@drawable/buttton_background"
+                android:background="@drawable/button_background"
                 android:drawablePadding="0dp"
                 android:text="Q" />
         </LinearLayout>

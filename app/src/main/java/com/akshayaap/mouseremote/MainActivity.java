@@ -18,6 +18,7 @@ import java.net.InetAddress;
 
 public class MainActivity extends AppCompatActivity {
     ImageView imageView_wifiLogo;
+    RecyclerView recyclerView_serverList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +26,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         imageView_wifiLogo = findViewById(R.id.imageView_wifiLogo);
+        recyclerView_serverList = findViewById(R.id.recyclerView_serverList);
+
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in_fade_out);
         imageView_wifiLogo.startAnimation(animation);
+
+//        NOTE: Make Wifi Logo invisible and Make Recycler view Visible when Connections are found
 
         Connecting con = new Connecting();
         Thread conThread = new Thread(con);

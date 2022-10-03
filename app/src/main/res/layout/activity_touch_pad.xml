@@ -5,7 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/txt_ip_port"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="@string/waiting"
+        android:textColor="@color/grey"
+        android:translationZ="100dp"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -19,8 +32,8 @@
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1.5"
             android:layout_gravity="bottom"
+            android:layout_weight="1.5"
             android:orientation="horizontal"
             android:weightSum="3">
 
@@ -36,8 +49,9 @@
                 android:id="@+id/wheel"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@color/black"
-                android:layout_weight="0.75">
+                android:layout_weight="0.75"
+                android:background="@color/black">
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <Button
@@ -47,6 +61,7 @@
                 android:layout_weight="1.125"
                 android:foreground="@drawable/button_background"
                 tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
         </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -54,14 +69,18 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.5"
-            android:foreground="@drawable/scrollbar_col" />
+            android:foreground="@drawable/scrollbar_col">
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/touchpad"
-        android:layout_height="0dp"
-        android:foreground="@drawable/button_background"
-        android:layout_weight="3"
-        android:layout_width="match_parent"/>
+            android:id="@+id/touchpad"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:foreground="@drawable/button_background" >
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 

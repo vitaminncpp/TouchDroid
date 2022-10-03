@@ -1,5 +1,5 @@
 # MouseRemote
-- A MouseRemote project was initialted as the solution of controlling computer via Local Network. MouseRemote is Android Application which emulates the behaviour of touchpad of Laptop computer. [MouseRemoteServer](https://www.github.com/Akshayaap/MouseRemoteServer) is required to be run in Computer in order to control Computer Remotly.
+- A MouseRemote project was initiated as the solution of controlling computer via Local Network. MouseRemote is Android Application which emulates the behaviour of touchpad of Laptop computer. [MouseRemoteServer](https://www.github.com/Akshayaap/MouseRemoteServer) is required to be run in Computer in order to control Computer Remotely.
 - An Application is available via [This Repo](https://apt.izzysoft.de/fdroid/index/apk/com.akshayaap.mouseremote)
   
   ## Table of Content
@@ -10,7 +10,7 @@
   - [Contributors](#contributors)
   
   ## Technologies
-  ### For Desktop Server Applicarion
+  ### For Desktop Server Application
   - C++.
   - C#.
 
@@ -27,7 +27,7 @@
   - Now you will be able to control Server.
   - Open MouseRemote application in android.
   - The app will connect to server automatically.
-  - There will be touch area, Letf and Right Buttons and Wheel.
+  - There will be touch area, Left and Right Buttons and Wheel.
   <br/><br/>
   Note: **The mobile and server must be in same network**
   For More See: [Documentation](https://www.github.com/Akshayaap/Documentation).

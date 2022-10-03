@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -17,8 +18,9 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/hWheel"
             android:layout_width="match_parent"
+            android:background="@color/primary"
             android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:layout_weight="0.75"/>
 
         <LinearLayout
             android:id="@+id/linearLayout2"
@@ -33,28 +35,35 @@
                 android:id="@+id/btnLeft"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/leftBtn" />
+                android:layout_weight="1.125"
+                android:background="@color/black"
+                android:foreground="@color/black"
+                android:text="@string/leftBtn"
+                tools:ignore="NestedWeights" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/wheel"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
+                android:background="@color/primary_dark"
+                android:layout_weight="0.75">
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <Button
                 android:id="@+id/btnRight"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:background="@color/black"
+                android:foreground="@color/black"
+                android:layout_weight="1.125"
                 android:text="@string/rightBtn" />
         </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/touchpad"
         android:layout_height="0dp"
-        android:layout_weight="3"
+        android:background="@color/primary"
+        android:layout_weight="3.25"
         android:layout_width="match_parent"/>
 
     </LinearLayout>

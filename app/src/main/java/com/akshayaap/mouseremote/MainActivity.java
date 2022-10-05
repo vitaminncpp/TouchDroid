@@ -1,5 +1,6 @@
 package com.akshayaap.mouseremote;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Layout;
 import android.util.Log;
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> tempWifiList;
     HashSet<String> ipList;
     Button scan;
-    Button logger;
+    Connecting conn = null;
     int i = 0;
 
     @Override
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ipList = new HashSet<>(1);
+        conn = new Connecting();
 
         imageView_wifiLogo = findViewById(R.id.imageView_wifiLogo);
         recyclerView_serverList = findViewById(R.id.recyclerView_serverList);
@@ -48,21 +50,23 @@ public class MainActivity extends AppCompatActivity {
 //        NOTE: ADD FUNCTIONALITY HERE!!
 
 //        NOTE: Make Wifi Logo invisible and Make Recycler view Visible when Connections are found
-        imageView_wifiLogo.setVisibility(View.GONE);
+        //imageView_wifiLogo.setVisibility(View.GONE);
         recyclerView_serverList.setVisibility(View.VISIBLE);
 
         tempWifiList = new ArrayList<>();
-        tempWifiList.add("asd");
-        tempWifiList.add("zxc");
-        tempWifiList.add("qwe");
-
         adapter = new WifiListAdapter(this, tempWifiList);
         recyclerView_serverList.setAdapter(adapter);
         recyclerView_serverList.setLayoutManager(new LinearLayoutManager(this));
 
-        adapter.setOnItemClickListener(position -> {
-//        NOTE: connect to the server here
-            Log.d("!!!", "clicked");
+        adapter.setOnItemClickListener(new WifiListAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                Log.d("!!!", "onItemClick: " + tempWifiList.get(position));
+                Intent myIntent = new Intent(MainActivity.this, TouchPad.class);
+                myIntent.putExtra("ip", tempWifiList.get(position));
+                conn.freeResources();
+                startActivity(myIntent);
+            }
         });
 
         scan = findViewById(R.id.scan);
@@ -78,15 +82,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        logger = findViewById(R.id.log);
-        logger.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.d("Log_button_log", "onClick: Logged");
-            }
-        });
 
-        new Thread(new TestConn()).start();
+//        new Thread(new TestConn()).start();
+        new Thread(new Connecting()).start();
     }
 
     public void addHostToLost(InetAddress ip, String name, int i) {
@@ -105,37 +103,44 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public class Connecting implements Runnable {
+        private InetAddress ipAddress = null;
+        private DatagramSocket serverSocket = null;
+        private DatagramPacket receivePacket = null;
+
         public void run() {
-            synchronized (MainActivity.this) {
-                InetAddress ipAddress = null;
-                DatagramSocket serverSocket = null;
-                DatagramPacket receivePacket = null;
+            try {
+                serverSocket = new DatagramSocket(Config.ECHO_PORT);
+            } catch (SocketException e) {
+                e.printStackTrace();
+            }
+            while (true) {
+                synchronized (MainActivity.this) {
 
-
-                while (true) {
-                    try {
-                        serverSocket = new DatagramSocket(Config.ECHO_PORT);
-                    } catch (SocketException e) {
-                        e.printStackTrace();
-                    }
                     byte[] receiveData = new byte[4];
-
                     receivePacket = new DatagramPacket(receiveData, receiveData.length);
-                    ipAddress = receivePacket.getAddress();
-                    ipList.add(ipAddress.getHostAddress());
                     try {
                         serverSocket.receive(receivePacket);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+                    ipAddress = receivePacket.getAddress();
+                    ipList.add(ipAddress.getHostAddress());
+                    tempWifiList.clear();
+                    tempWifiList.addAll(ipList);
                 }
             }
 
         }
-//
-//            Intent myIntent = new Intent(MainActivity.this, TouchPad.class);
-//            myIntent.putExtra("ip", ipAddress.toString().substring(1));
-//            startActivity(myIntent);
+
+        public void freeResources() {
+            this.serverSocket.close();
+        }
+
+        @Override
+        protected void finalize() throws Throwable {
+            super.finalize();
+            this.serverSocket.close();
+        }
     }
 
     class TestConn implements Runnable {

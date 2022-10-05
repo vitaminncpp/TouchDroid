@@ -2,7 +2,6 @@ package com.akshayaap.mouseremote;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.Button;
 import android.widget.TextView;
@@ -18,7 +17,9 @@ import java.net.UnknownHostException;
 
 public class TouchPad extends AppCompatActivity {
     Sender sender;
+    int port = 0;
     Event event = new Event();
+    InetAddress ip = null;
     private int X = 0;
     private int Y = 0;
     private int Xp = 0;
@@ -31,13 +32,15 @@ public class TouchPad extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_touch_pad);
-        String ip = getIntent().getStringExtra("ip");
-        String port = Integer.toString(Config.SERVER_PORT);
+        port = Config.SERVER_PORT;
         try {
-            sender = new Sender(InetAddress.getByName(ip), Config.SERVER_PORT);
-        } catch (SocketException | UnknownHostException e) {
+            ip = InetAddress.getByName(getIntent().getStringExtra("ip"));
+            sender = new Sender(ip, Config.SERVER_PORT);
+        } catch (UnknownHostException | SocketException e) {
             e.printStackTrace();
         }
+
+
         ConstraintLayout layout = findViewById(R.id.touchpad);
         ConstraintLayout wheel = findViewById(R.id.wheel);
         ConstraintLayout hWheel = findViewById(R.id.hWheel);
@@ -153,5 +156,27 @@ public class TouchPad extends AppCompatActivity {
             return true;
         });
         event.setType(Event.INPUT_MOUSE);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        try {
+            sender = new Sender(InetAddress.getByName(ip), Config.SERVER_PORT);
+        } catch (SocketException | UnknownHostException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        sender.freeResources();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        sender.freeResources();
     }
 }

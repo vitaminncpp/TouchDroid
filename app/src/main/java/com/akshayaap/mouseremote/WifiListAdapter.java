@@ -9,8 +9,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.akshayaap.mouseremote.R;
-
 import java.util.ArrayList;
 
 public class WifiListAdapter extends RecyclerView.Adapter<WifiListAdapter.WifiViewHolder> {
@@ -41,6 +39,13 @@ public class WifiListAdapter extends RecyclerView.Adapter<WifiListAdapter.WifiVi
         return wifiList.size();
     }
 
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        clickListener = listener;
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
 
     public static class WifiViewHolder extends RecyclerView.ViewHolder {
         TextView textView_wifiNameTitle;
@@ -50,21 +55,13 @@ public class WifiListAdapter extends RecyclerView.Adapter<WifiListAdapter.WifiVi
             textView_wifiNameTitle = itemView.findViewById(R.id.textView_wifiNameTitle);
 
             itemView.setOnClickListener(view -> {
-                if(clickListener != null){
+                if (clickListener != null) {
                     int position = getAdapterPosition();
-                    if(position != RecyclerView.NO_POSITION){
+                    if (position != RecyclerView.NO_POSITION) {
                         clickListener.onItemClick(position);
                     }
                 }
             });
         }
-    }
-
-    public interface OnItemClickListener{
-        void onItemClick(int position);
-    }
-
-    public void setOnItemClickListener(OnItemClickListener listener){
-        clickListener = listener;
     }
 }

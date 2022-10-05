@@ -12,9 +12,10 @@ public class Sender {
     String data;
     DatagramSocket socket;
     DatagramPacket packet;
+
     public Sender(InetAddress ip, int port) throws SocketException {
-        socket=new DatagramSocket(Config.SERVER_PORT);
-        packet=new DatagramPacket(new byte[256],256);
+        socket = new DatagramSocket(Config.SERVER_PORT);
+        packet = new DatagramPacket(new byte[256], 256);
         packet.setAddress(ip);
         packet.setPort(Config.SERVER_PORT);
     }
@@ -22,6 +23,16 @@ public class Sender {
     public void send(String data) {
         this.data = data;
         new Thread(new SenderThread()).start();
+    }
+
+    public void freeResources() {
+        this.socket.close();
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        super.finalize();
+        this.socket.close();
     }
 
     class SenderThread implements Runnable {

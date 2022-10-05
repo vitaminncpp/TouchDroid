@@ -162,7 +162,7 @@ public class TouchPad extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         try {
-            sender = new Sender(InetAddress.getByName(ip), Config.SERVER_PORT);
+            sender = new Sender(InetAddress.getByName(getIntent().getStringExtra("ip")), Config.SERVER_PORT);
         } catch (SocketException | UnknownHostException e) {
             e.printStackTrace();
         }

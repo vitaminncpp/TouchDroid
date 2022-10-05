@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 //        new Thread(new TestConn()).start();
-        new Thread(new Connecting()).start();
+        new Thread(conn).start();
     }
 
     public void addHostToLost(InetAddress ip, String name, int i) {
@@ -103,21 +103,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public class Connecting implements Runnable {
+        byte[] receiveData = new byte[4];
         private InetAddress ipAddress = null;
         private DatagramSocket serverSocket = null;
         private DatagramPacket receivePacket = null;
 
-        public void run() {
+
+        public Connecting() {
             try {
                 serverSocket = new DatagramSocket(Config.ECHO_PORT);
             } catch (SocketException e) {
                 e.printStackTrace();
             }
+            receivePacket = new DatagramPacket(receiveData, receiveData.length);
+        }
+
+        public void run() {
+
             while (true) {
                 synchronized (MainActivity.this) {
-
-                    byte[] receiveData = new byte[4];
-                    receivePacket = new DatagramPacket(receiveData, receiveData.length);
                     try {
                         serverSocket.receive(receivePacket);
                     } catch (IOException e) {
@@ -133,7 +137,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         public void freeResources() {
-            this.serverSocket.close();
+            if (serverSocket != null) {
+                this.serverSocket.close();
+            }
         }
 
         @Override

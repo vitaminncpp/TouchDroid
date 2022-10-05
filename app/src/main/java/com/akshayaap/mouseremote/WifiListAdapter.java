@@ -1,4 +1,4 @@
-package com.example.mouseremote;
+package com.akshayaap.mouseremote;
 
 import android.content.Context;
 import android.view.LayoutInflater;

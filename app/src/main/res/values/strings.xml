@@ -14,4 +14,5 @@
     <string name="IPinput">_ _ _ . _ _ _ . _ _ _ . _ _ _</string>
     <string name="skrinternationals">Powered BY <b>©SKRinternationals</b></string>
     <string name="instruction">Waiting for <b>MouseRemoteServer.exe</b> to run on Host device… <br /> Download it from <br /> https://github.com/Akshayaap/MouseRemoteServer</string>
+    <string name="scan">Scan</string>
 </resources>

@@ -58,15 +58,12 @@ public class MainActivity extends AppCompatActivity {
         recyclerView_serverList.setAdapter(adapter);
         recyclerView_serverList.setLayoutManager(new LinearLayoutManager(this));
 
-        adapter.setOnItemClickListener(new WifiListAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(int position) {
-                Log.d("!!!", "onItemClick: " + tempWifiList.get(position));
-                Intent myIntent = new Intent(MainActivity.this, TouchPad.class);
-                myIntent.putExtra("ip", tempWifiList.get(position));
-                conn.freeResources();
-                startActivity(myIntent);
-            }
+        adapter.setOnItemClickListener(position -> {
+            Log.d("!!!", "onItemClick: " + tempWifiList.get(position));
+            Intent myIntent = new Intent(MainActivity.this, TouchPad.class);
+            myIntent.putExtra("ip", tempWifiList.get(position));
+            conn.freeResources();
+            startActivity(myIntent);
         });
 
         scan = findViewById(R.id.scan);

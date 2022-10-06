@@ -40,7 +40,6 @@ public class TouchPad extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
         ConstraintLayout layout = findViewById(R.id.touchpad);
         ConstraintLayout wheel = findViewById(R.id.wheel);
         ConstraintLayout hWheel = findViewById(R.id.hWheel);

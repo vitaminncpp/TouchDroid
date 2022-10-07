@@ -76,4 +76,5 @@
     <string name="_3">3</string>
     <string name="tab">Tab</string>
     <string name="caps">Caps</string>
+    <string name="delete">delete</string>
 </resources>

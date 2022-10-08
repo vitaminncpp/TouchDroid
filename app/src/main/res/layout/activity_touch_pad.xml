@@ -79,9 +79,21 @@
             android:layout_height="0dp"
             android:layout_weight="3"
             android:foreground="@drawable/button_background" >
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/imageButton_SwitchToKey"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/grey"
+        android:backgroundTint="@color/grey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_port_touch"
+        tools:ignore="ContentDescription" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

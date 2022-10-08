@@ -19,8 +19,8 @@
     <string name="down">v</string>
     <string name="right"><![CDATA[>]]></string>
     <string name="left"><![CDATA[<]]></string>
-    <string name="prtscr">PrtScr</string>
-    <string name="insert">Insert</string>
+    <string name="prtscr">Prt Scr</string>
+    <string name="insert">Ins</string>
     <string name="dot">.</string>
     <string name="comma">,</string>
     <string name="slash">/</string>
@@ -61,7 +61,6 @@
     <string name="r">R</string>
     <string name="w">W</string>
     <string name="u">U</string>
-    <string name="backspace"><![CDATA[<-]]></string>
     <string name="underscore">_</string>
     <string name="equals">=</string>
     <string name="_7">7</string>
@@ -76,5 +75,6 @@
     <string name="_3">3</string>
     <string name="tab">Tab</string>
     <string name="caps">Caps</string>
-    <string name="delete">delete</string>
+    <string name="delete">Del</string>
+    <string name="backspace"><![CDATA[<-]]></string>
 </resources>

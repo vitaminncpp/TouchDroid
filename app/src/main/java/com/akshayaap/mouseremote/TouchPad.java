@@ -1,9 +1,12 @@
 package com.akshayaap.mouseremote;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -46,6 +49,8 @@ public class TouchPad extends AppCompatActivity {
         Button btnLeft = findViewById(R.id.btnLeft);
         Button btnRight = findViewById(R.id.btnRight);
         TextView txt_ip_port = findViewById(R.id.txt_ip_port);
+        ImageButton imageButton_SwitchToKey = findViewById(R.id.imageButton_SwitchToKey);
+
         txt_ip_port.setText("Connected to " + ip + " : " + port);
 
         layout.setOnTouchListener((view, motionEvent) -> {
@@ -93,7 +98,6 @@ public class TouchPad extends AppCompatActivity {
             return true;
         });
 
-
         btnRight.setOnTouchListener((view, motionEvent) -> {
             int type = motionEvent.getActionMasked();
             switch (type) {
@@ -133,6 +137,7 @@ public class TouchPad extends AppCompatActivity {
             }
             return true;
         });
+
         hWheel.setOnTouchListener((view, motionEvent) -> {
             int type = motionEvent.getActionMasked();
             switch (type) {
@@ -154,7 +159,12 @@ public class TouchPad extends AppCompatActivity {
             }
             return true;
         });
+
         event.setType(Event.INPUT_MOUSE);
+
+        imageButton_SwitchToKey.setOnClickListener(v->{
+            startActivity(new Intent(TouchPad.this, Keyboard.class));
+        });
     }
 
     @Override

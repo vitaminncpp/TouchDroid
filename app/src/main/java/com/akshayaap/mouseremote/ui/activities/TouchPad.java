@@ -1,10 +1,9 @@
-package com.akshayaap.mouseremote;
+package com.akshayaap.mouseremote.ui.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -12,6 +11,9 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.akshayaap.mouseremote.config.Config;
+import com.akshayaap.mouseremote.R;
+import com.akshayaap.mouseremote.network.Sender;
 import com.akshayaap.mouseremote.util.Event;
 
 import java.net.InetAddress;

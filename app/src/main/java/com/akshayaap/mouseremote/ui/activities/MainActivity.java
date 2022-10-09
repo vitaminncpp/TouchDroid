@@ -1,4 +1,4 @@
-package com.akshayaap.mouseremote;
+package com.akshayaap.mouseremote.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +14,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.akshayaap.mouseremote.config.Config;
+import com.akshayaap.mouseremote.R;
+import com.akshayaap.mouseremote.ui.adapters.WifiListAdapter;
 
 import java.io.IOException;
 import java.net.DatagramPacket;

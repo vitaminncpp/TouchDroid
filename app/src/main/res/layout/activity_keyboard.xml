@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Keyboard">
+    tools:context=".ui.activities.Keyboard">
 
     <Button
         android:id="@+id/buttonUp"
@@ -724,7 +724,7 @@
         android:layout_marginStart="2dp"
         android:layout_marginTop="12dp"
         android:backgroundTint="@color/primary"
-        android:text="@string/_8"
+        android:text="@string/_0"
         android:textColor="@color/black"
         app:layout_constraintStart_toEndOf="@+id/button9"
         app:layout_constraintTop_toTopOf="parent" />
@@ -886,16 +886,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonLShift" />
 
-    <ImageButton
-        android:id="@+id/imageButton_SwitchToPad"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/white"
-        android:backgroundTint="@color/grey"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_port_keyboard"
-        tools:ignore="ContentDescription" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -77,4 +77,5 @@
     <string name="caps">Caps</string>
     <string name="delete">Del</string>
     <string name="backspace"><![CDATA[<-]]></string>
+    <string name="_0">0</string>
 </resources>

@@ -1,4 +1,6 @@
-package com.akshayaap.mouseremote;
+package com.akshayaap.mouseremote.network;
+
+import com.akshayaap.mouseremote.config.Config;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -15,7 +17,7 @@ public class Sender {
 
     public Sender(InetAddress ip, int port) throws SocketException {
         socket = new DatagramSocket(Config.SERVER_PORT);
-        packet = new DatagramPacket(new byte[256], 256);
+        packet = new DatagramPacket(null, 256);
         packet.setAddress(ip);
         packet.setPort(Config.SERVER_PORT);
     }

@@ -1,15 +1,18 @@
-package com.akshayaap.mouseremote;
+package com.akshayaap.mouseremote.ui.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
+
+import com.akshayaap.mouseremote.R;
 
 public class Keyboard extends AppCompatActivity {
 
-    ImageButton imageButton_SwitchToPad;
+
+    KeyPressedHandler handler;
     Button buttonUp;
     Button buttonLeft;
     Button buttonDown;
@@ -84,11 +87,22 @@ public class Keyboard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_keyboard);
+        initKeys();
+        handler=new KeyPressedHandler();
+        addActionListenertoKeys();
 
-        imageButton_SwitchToPad = findViewById(R.id.imageButton_SwitchToPad);
+    }
+
+    private void addActionListenertoKeys() {
+        button0.setOnClickListener(handler);
+        button1.setOnClickListener(handler);
+    }
+
+    private void initKeys() {
+
         buttonUp = findViewById(R.id.buttonUp);
         buttonLeft = findViewById(R.id.buttonLeft);
-        buttonDown=findViewById(R.id.buttonDown);
+        buttonDown = findViewById(R.id.buttonDown);
         buttonRight = findViewById(R.id.buttonRight);
         buttonA = findViewById(R.id.buttonA);
         buttonB = findViewById(R.id.buttonB);
@@ -151,9 +165,25 @@ public class Keyboard extends AppCompatActivity {
         buttonPrintScr = findViewById(R.id.buttonPrintScr);
         buttonInsert = findViewById(R.id.buttonInsert);
         buttonDelete = findViewById(R.id.buttonDelete);
+    }
 
-        imageButton_SwitchToPad.setOnClickListener(v->{
-            startActivity(new Intent(Keyboard.this, TouchPad.class));
-        });
+    class KeyPressedHandler implements View.OnClickListener {
+
+        @Override
+        public void onClick(View view) {
+            Log.d("keyPressed", "Yess"+view.toString());
+            int keyID = view.getId();
+            switch (keyID) {
+                case R.id.button0:
+                    Log.d("keyevent", "onClick: button0");
+                    break;
+                case R.id.button1:
+                    Log.d("keyevent", "onClick: button1");
+                    break;
+
+                default:
+                    break;
+            }
+        }
     }
 }

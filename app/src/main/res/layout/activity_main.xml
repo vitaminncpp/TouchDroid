@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/button_background"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".ui.activities.MainActivity">
 
     <TextView
         android:id="@+id/textView_appName"
@@ -39,9 +39,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/scan"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_appName"
+        app:layout_constraintVertical_bias="0.883"
         app:srcCompat="@drawable/ic_baseline_wifi"
         tools:ignore="ContentDescription,ImageContrastCheck" />
 

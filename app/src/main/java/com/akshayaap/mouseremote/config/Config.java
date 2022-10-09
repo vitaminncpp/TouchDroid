@@ -1,4 +1,4 @@
-package com.akshayaap.mouseremote;
+package com.akshayaap.mouseremote.config;
 
 public class Config {
     public static final int ECHO_PORT = 5560;

@@ -12,7 +12,7 @@ public class UDPReceiver {
     private DatagramSocket socket = null;
     private DatagramPacket packet = null;
 
-    private boolean onerr = false;
+    private boolean onErr = false;
     private IOException ex = null;
     private TaskCompleteCallback onReceived = null;
 
@@ -51,13 +51,13 @@ public class UDPReceiver {
                     socket.receive(packet);
                     onReceived.complete();
                 } catch (IOException e) {
-                    onerr = true;
+                    onErr = true;
                     UDPReceiver.this.ex = e;
                 }
             }
         }.start();
-        if (onerr) {
-            onerr = false;
+        if (onErr) {
+            onErr = false;
             throw this.ex;
         }
     }

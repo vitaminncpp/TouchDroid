@@ -10,13 +10,12 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
-import java.nio.charset.StandardCharsets;
 
 public class UDPSender {
     private DatagramSocket socket = null;
     private DatagramPacket packet = null;
 
-    private boolean onerr = false;
+    private boolean onErr = false;
     private IOException ex = null;
 
     private TaskCompleteCallback onSent = null;
@@ -48,13 +47,13 @@ public class UDPSender {
                     socket.send(packet);
                     onSent.complete();
                 } catch (IOException e) {
-                    onerr = true;
+                    onErr = true;
                     UDPSender.this.ex = e;
                 }
             }
         }.start();
-        if (onerr) {
-            onerr = false;
+        if (onErr) {
+            onErr = false;
             throw ex;
         }
     }

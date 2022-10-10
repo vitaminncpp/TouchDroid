@@ -33,4 +33,11 @@ public class GlobalFactory {
         return factory;
     }
 
+    public UDPSender getMessageSender() {
+        return this.messageSender;
+    }
+
+    public UDPReceiver getEchoReceiver() {
+        return this.echoReceiver;
+    }
 }

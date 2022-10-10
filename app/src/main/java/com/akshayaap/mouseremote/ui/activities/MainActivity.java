@@ -15,8 +15,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.akshayaap.mouseremote.abstractfactory.GlobalFactory;
 import com.akshayaap.mouseremote.config.Config;
 import com.akshayaap.mouseremote.R;
+import com.akshayaap.mouseremote.debug.LoggMessage;
+import com.akshayaap.mouseremote.network.UDPReceiver;
 import com.akshayaap.mouseremote.ui.adapters.WifiListAdapter;
 
 import java.io.IOException;
@@ -43,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ipList = new HashSet<>(1);
-        conn = new Connecting();
 
         imageView_wifiLogo = findViewById(R.id.imageView_wifiLogo);
         recyclerView_serverList = findViewById(R.id.recyclerView_serverList);
@@ -83,9 +85,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        new Thread() {
+            private UDPReceiver echoServer = GlobalFactory.getFactory().getEchoReceiver();
+            private byte data[] = new byte[4];
 
-//        new Thread(new TestConn()).start();
-        new Thread(conn).start();
+            @Override
+            public void run() {
+                while (true) {
+                    try {
+                        echoServer.receive(data);
+                    } catch (IOException e) {
+                        LoggMessage message = new LoggMessage("networkerr", "", Thread.currentThread().getStackTrace());
+                        GlobalFactory.getFactory().getLogger().log(message);
+                    }
+                }
+            }
+        }.start();
+        // new Thread(new TestConn()).start();
+        // new Thread(conn).start();
     }
 
     public void addHostToLost(InetAddress ip, String name, int i) {

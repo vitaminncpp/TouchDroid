@@ -94,8 +94,18 @@ public class Keyboard extends AppCompatActivity {
     }
 
     private void addActionListenertoKeys() {
-        button0.setOnClickListener(handler);
-        button1.setOnClickListener(handler);
+        button0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("keyevent", "onClick: button0");
+            }
+        });
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("keyevent", "onClick: button1");
+            }
+        });
     }
 
     private void initKeys() {

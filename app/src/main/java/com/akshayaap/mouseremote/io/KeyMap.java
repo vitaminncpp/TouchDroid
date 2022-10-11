@@ -6,33 +6,37 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class KeyMap {
-    private Map<Integer, Integer> keymap = null;
+    private Map<Integer, Integer> keyMap = null;
 
     public KeyMap() {
-        keymap = new HashMap<>();
+        keyMap = new HashMap<>();
         initMap();
     }
 
     private void initMap() {
 
-        keymap.put(R.id.button0, (int) '0');
-        keymap.put(R.id.button1, (int) '1');
-        keymap.put(R.id.button2, (int) '2');
-        keymap.put(R.id.button3, (int) '3');
-        keymap.put(R.id.button4, (int) '4');
-        keymap.put(R.id.button5, (int) '5');
-        keymap.put(R.id.button6, (int) '6');
-        keymap.put(R.id.button7, (int) '7');
-        keymap.put(R.id.button8, (int) '8');
-        keymap.put(R.id.button9, (int) '9');
+        keyMap.put(R.id.button0, (int) '0');
+        keyMap.put(R.id.button1, (int) '1');
+        keyMap.put(R.id.button2, (int) '2');
+        keyMap.put(R.id.button3, (int) '3');
+        keyMap.put(R.id.button4, (int) '4');
+        keyMap.put(R.id.button5, (int) '5');
+        keyMap.put(R.id.button6, (int) '6');
+        keyMap.put(R.id.button7, (int) '7');
+        keyMap.put(R.id.button8, (int) '8');
+        keyMap.put(R.id.button9, (int) '9');
 
-        keymap.put(R.id.buttonA, (int) 'a');
-        keymap.put(R.id.buttonB, (int) 'b');
-        keymap.put(R.id.buttonC, (int) 'c');
-        keymap.put(R.id.buttonD, (int) 'd');
-        keymap.put(R.id.buttonE, (int) 'e');
-        keymap.put(R.id.buttonF, (int) 'f');
+        keyMap.put(R.id.buttonA, (int) 'a');
+        keyMap.put(R.id.buttonB, (int) 'b');
+        keyMap.put(R.id.buttonC, (int) 'c');
+        keyMap.put(R.id.buttonD, (int) 'd');
+        keyMap.put(R.id.buttonE, (int) 'e');
+        keyMap.put(R.id.buttonF, (int) 'f');
 
 
+    }
+
+    public int getKeyCode(int uiButtonCode) {
+        return this.keyMap.get(uiButtonCode);
     }
 }

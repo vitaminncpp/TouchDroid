@@ -3,6 +3,7 @@ package com.akshayaap.mouseremote.abstractfactory;
 import com.akshayaap.mouseremote.config.Config;
 import com.akshayaap.mouseremote.debug.DebugDatabase;
 import com.akshayaap.mouseremote.debug.LoggMessage;
+import com.akshayaap.mouseremote.io.KeyMap;
 import com.akshayaap.mouseremote.network.UDPReceiver;
 import com.akshayaap.mouseremote.network.UDPSender;
 import com.akshayaap.mouseremote.debug.Logger;
@@ -19,11 +20,14 @@ public class GlobalFactory {
     private UDPSender messageSender;
     private UDPReceiver echoReceiver;
 
+    private KeyMap keyMap;
+
     //utils
     private Logger logger;
     private DebugDatabase dd;
 
     private GlobalFactory() {
+        keyMap = new KeyMap();
         dd = new DebugDatabase();
         logger = new Logger() {
             @Override
@@ -76,5 +80,9 @@ public class GlobalFactory {
 
     public Logger getLogger() {
         return this.logger;
+    }
+
+    public KeyMap getKeyMap() {
+        return this.keyMap;
     }
 }

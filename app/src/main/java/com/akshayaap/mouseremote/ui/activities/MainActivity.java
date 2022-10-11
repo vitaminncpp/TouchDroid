@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> tempWifiList;
     HashSet<String> ipList;
     Button scan;
-    Connecting conn=new Connecting();
+    Connecting conn = new Connecting();
     int i = 0;
 
     @Override

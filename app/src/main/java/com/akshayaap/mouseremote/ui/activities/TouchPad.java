@@ -14,7 +14,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.akshayaap.mouseremote.config.Config;
 import com.akshayaap.mouseremote.R;
 import com.akshayaap.mouseremote.network.Sender;
-import com.akshayaap.mouseremote.util.Event;
+import com.akshayaap.mouseremote.io.Event;
 
 import java.net.InetAddress;
 import java.net.SocketException;

@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> tempWifiList;
     HashSet<String> ipList;
     Button scan;
-    Connecting conn = null;
+    Connecting conn=new Connecting();
     int i = 0;
 
     @Override
@@ -65,10 +65,10 @@ public class MainActivity extends AppCompatActivity {
         recyclerView_serverList.setLayoutManager(new LinearLayoutManager(this));
 
         adapter.setOnItemClickListener(position -> {
+            conn.interrupt();
             Log.d("!!!", "onItemClick: " + tempWifiList.get(position));
             Intent myIntent = new Intent(MainActivity.this, TouchPad.class);
             myIntent.putExtra("ip", tempWifiList.get(position));
-            conn.freeResources();
             startActivity(myIntent);
         });
 
@@ -85,22 +85,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        new Thread() {
-            private UDPReceiver echoServer = GlobalFactory.getFactory().getEchoReceiver();
-            private byte data[] = new byte[4];
-
-            @Override
-            public void run() {
-                while (true) {
-                    try {
-                        echoServer.receive(data);
-                    } catch (IOException e) {
-                        LoggMessage message = new LoggMessage("networkerr", "", Thread.currentThread().getStackTrace());
-                        GlobalFactory.getFactory().getLogger().log(message);
-                    }
-                }
-            }
-        }.start();
+        conn.start();
         // new Thread(new TestConn()).start();
         // new Thread(conn).start();
     }
@@ -120,71 +105,29 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public class Connecting implements Runnable {
-        byte[] receiveData = new byte[4];
+    public class Connecting extends Thread {
+        byte[] data = new byte[4];
         private InetAddress ipAddress = null;
-        private DatagramSocket serverSocket = null;
-        private DatagramPacket receivePacket = null;
-
-
-        public Connecting() {
-            try {
-                serverSocket = new DatagramSocket(Config.ECHO_PORT);
-            } catch (SocketException e) {
-                e.printStackTrace();
-            }
-            receivePacket = new DatagramPacket(receiveData, receiveData.length);
-        }
+        UDPReceiver echo = GlobalFactory.getFactory().getEchoReceiver();
 
         public void run() {
 
             while (true) {
                 synchronized (MainActivity.this) {
                     try {
-                        serverSocket.receive(receivePacket);
+                        echo.receive(data);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    ipAddress = receivePacket.getAddress();
+                    ipAddress = echo.getPacket().getAddress();
                     ipList.add(ipAddress.getHostAddress());
                     tempWifiList.clear();
                     tempWifiList.addAll(ipList);
                 }
             }
-
         }
 
-        public void freeResources() {
-            if (serverSocket != null) {
-                this.serverSocket.close();
-            }
-        }
-
-        @Override
-        protected void finalize() throws Throwable {
-            super.finalize();
-            this.serverSocket.close();
-        }
     }
 
-    class TestConn implements Runnable {
 
-        @Override
-        public void run() {
-            while (true) {
-                synchronized (this) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    i++;
-                    ipList.add("Host: #" + (int) (i / 10));
-                    tempWifiList.clear();
-                    tempWifiList.addAll(ipList);
-                    //adapter.notifyItemInserted(i);
-                }
-            }
-        }
-    }
 }

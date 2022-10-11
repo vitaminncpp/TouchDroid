@@ -30,6 +30,12 @@ public class GlobalFactory {
             public void log(LoggMessage message) {
                 dd.addMessage(message);
             }
+
+            @Override
+            public void log(String tag, String message) {
+                LoggMessage msg = new LoggMessage(tag, message);
+                dd.addMessage(msg);
+            }
         };
         init();
     }
@@ -42,7 +48,6 @@ public class GlobalFactory {
             logger.log(message);
         }
     }
-
 
     public void createMessageSender(InetAddress address) throws SocketException, UnknownHostException {
         if (this.messageSender != null) {

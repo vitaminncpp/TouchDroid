@@ -2,8 +2,10 @@ package com.akshayaap.mouseremote.ui.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 
@@ -88,24 +90,15 @@ public class Keyboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_keyboard);
         initKeys();
-        handler=new KeyPressedHandler();
-        addActionListenertoKeys();
+        handler = new KeyPressedHandler();
+        addActionListenersToKeys();
 
     }
 
-    private void addActionListenertoKeys() {
-        button0.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.d("keyevent", "onClick: button0");
-            }
-        });
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.d("keyevent", "onClick: button1");
-            }
-        });
+    @SuppressLint("ClickableViewAccessibility")
+    private void addActionListenersToKeys() {
+        button0.setOnTouchListener(handler);
+        button1.setOnTouchListener(handler);
     }
 
     private void initKeys() {
@@ -177,23 +170,11 @@ public class Keyboard extends AppCompatActivity {
         buttonDelete = findViewById(R.id.buttonDelete);
     }
 
-    class KeyPressedHandler implements View.OnClickListener {
+    static class KeyPressedHandler implements View.OnTouchListener {
 
         @Override
-        public void onClick(View view) {
-            Log.d("keyPressed", "Yess"+view.toString());
-            int keyID = view.getId();
-            switch (keyID) {
-                case R.id.button0:
-                    Log.d("keyevent", "onClick: button0");
-                    break;
-                case R.id.button1:
-                    Log.d("keyevent", "onClick: button1");
-                    break;
-
-                default:
-                    break;
-            }
+        public boolean onTouch(View view, MotionEvent motionEvent) {
+            return false;
         }
     }
 }

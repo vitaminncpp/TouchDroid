@@ -1,4 +1,4 @@
-package com.akshayaap.mouseremote.util;
+package com.akshayaap.mouseremote.io;
 
 public class Event {
 

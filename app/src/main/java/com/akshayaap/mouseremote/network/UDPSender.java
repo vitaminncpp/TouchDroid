@@ -20,9 +20,11 @@ public class UDPSender {
 
     private TaskCompleteCallback onSent = null;
 
-    public UDPSender(InetAddress ip, int port) throws UnknownHostException, SocketException {
-        socket = new DatagramSocket(port, ip);
-        packet = new DatagramPacket(null, 0);
+    public UDPSender(InetAddress ip, int port) throws SocketException {
+        socket = new DatagramSocket(port);
+        packet = new DatagramPacket(new byte[1024], 1024);
+        packet.setAddress(ip);
+        packet.setPort(port);
 
         onSent = new TaskCompleteCallback() {
             @Override
@@ -38,8 +40,8 @@ public class UDPSender {
     }
 
     public void send(@NonNull byte[] data) throws IOException {
-        packet.setLength(data.length);
         packet.setData(data);
+        packet.setLength(data.length);
         new Thread() {
             @Override
             public void run() {

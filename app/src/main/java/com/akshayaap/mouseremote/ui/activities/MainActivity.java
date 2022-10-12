@@ -68,11 +68,7 @@ public class MainActivity extends AppCompatActivity {
             conn.interrupt();
             Log.d("!!!", "onItemClick: " + tempWifiList.get(position));
             Intent myIntent = new Intent(MainActivity.this, TouchPad.class);
-            try {
-                GlobalFactory.getFactory().createMessageSender(tempWifiList.get(position).getIp());
-            } catch (SocketException | UnknownHostException e) {
-                GlobalFactory.getFactory().getLogger().log("networkerr", "Host Not found:" + e.getMessage());
-            }
+            GlobalFactory.getFactory().createMessageSender(tempWifiList.get(position).getIp());
             startActivity(myIntent);
         });
 
@@ -119,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
                         echo.receive(data);
                     } catch (IOException e) {
                         e.printStackTrace();
+                        GlobalFactory.getFactory().getLogger().log("networkerr", "Error Recevine Echo:" + e.getMessage());
                     }
                     ipAddress = echo.getPacket().getAddress();
                     if (ipAddress != null) {

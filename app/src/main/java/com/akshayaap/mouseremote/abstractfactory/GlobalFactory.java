@@ -22,8 +22,8 @@ public class GlobalFactory {
     private static GlobalFactory factory = new GlobalFactory();
 
     //Factory members
-    private UDPSender messageSender;
-    private UDPReceiver echoReceiver;
+    private UDPSender messageSender = null;
+    private UDPReceiver echoReceiver = null;
 
     private final KeyMap keyMap;
     private final HashMap<String, Server> servers;
@@ -60,12 +60,16 @@ public class GlobalFactory {
         }
     }
 
-    public UDPSender createMessageSender(InetAddress address) throws SocketException, UnknownHostException {
+    public UDPSender createMessageSender(InetAddress address) {
         if (this.messageSender != null) {
             this.messageSender.close();
         }
         //😆
-        this.messageSender = new UDPSender(address, Config.SERVER_PORT);
+        try {
+            this.messageSender = new UDPSender(address, Config.SERVER_PORT);
+        } catch (SocketException e) {
+            logger.log("networkerr", "Failed to Create messageSender:" + e.getMessage());
+        }
         return this.messageSender;
     }
 

@@ -3,6 +3,7 @@ package com.akshayaap.mouseremote.ui.activities;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -40,7 +41,6 @@ public class TouchPad extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_touch_pad);
-        port = Config.SERVER_PORT;
         messageSender = GlobalFactory.getFactory().getMessageSender();
 
         ConstraintLayout layout = findViewById(R.id.touchpad);
@@ -55,6 +55,7 @@ public class TouchPad extends AppCompatActivity {
 
         layout.setOnTouchListener((view, motionEvent) -> {
             int eventType = motionEvent.getActionMasked();
+            event.reset();
             switch (eventType) {
                 case MotionEvent.ACTION_UP:
                     Xp = 0;
@@ -73,6 +74,7 @@ public class TouchPad extends AppCompatActivity {
                             messageSender.send(event.toString().getBytes(StandardCharsets.UTF_8));
                         } catch (IOException e) {
                             GlobalFactory.getFactory().getLogger().log("networkerr", "Error Sending Event data:" + e.getMessage());
+                            Log.d("networkerr", "OnSent: Failed to send MotionData");
                         }
                     }
                     Xp = X;
@@ -101,6 +103,7 @@ public class TouchPad extends AppCompatActivity {
                 messageSender.send(event.toString().getBytes(StandardCharsets.UTF_8));
             } catch (IOException e) {
                 GlobalFactory.getFactory().getLogger().log("networkerr", "Error Sending Event data:" + e.getMessage());
+                Log.d("networkerr", "OnSent: Failed to send LetfClick");
             }
             return true;
         });
@@ -110,23 +113,24 @@ public class TouchPad extends AppCompatActivity {
             switch (type) {
                 case MotionEvent.ACTION_DOWN:
                     event.setDwFlags(Event.MOUSEEVENTF_RIGHTDOWN);
-                    event.setXY(0, 0);
                     break;
                 case MotionEvent.ACTION_UP:
                     event.setDwFlags(Event.MOUSEEVENTF_RIGHTUP);
-                    event.setXY(0, 0);
                     break;
             }
+            event.setXY(0, 0);
             try {
                 messageSender.send(event.toString().getBytes(StandardCharsets.UTF_8));
             } catch (IOException e) {
                 GlobalFactory.getFactory().getLogger().log("networkerr", "Error Sending Event data:" + e.getMessage());
+                Log.d("networkerr", "OnSent: Failed to send RightClick");
             }
             return true;
         });
 
         wheel.setOnTouchListener((view, motionEvent) -> {
             int type = motionEvent.getActionMasked();
+            event.reset();
             switch (type) {
                 case MotionEvent.ACTION_UP:
                     Yp = 0;
@@ -141,6 +145,7 @@ public class TouchPad extends AppCompatActivity {
                             messageSender.send(event.toString().getBytes(StandardCharsets.UTF_8));
                         } catch (IOException e) {
                             GlobalFactory.getFactory().getLogger().log("networkerr", "Error Sending Event data:" + e.getMessage());
+                            Log.d("networkerr", "OnSent: Failed to send WheelData");
                         }
                     }
                     Yp = Y;
@@ -153,6 +158,7 @@ public class TouchPad extends AppCompatActivity {
 
         hWheel.setOnTouchListener((view, motionEvent) -> {
             int type = motionEvent.getActionMasked();
+            event.reset();
             switch (type) {
                 case MotionEvent.ACTION_UP:
                     Xp = 0;
@@ -167,6 +173,7 @@ public class TouchPad extends AppCompatActivity {
                             messageSender.send(event.toString().getBytes(StandardCharsets.UTF_8));
                         } catch (IOException e) {
                             GlobalFactory.getFactory().getLogger().log("networkerr", "Error Sending Event data:" + e.getMessage());
+                            Log.d("networkerr", "OnSent: Failed to send HWheelData");
                         }
                     }
                     Xp = X;

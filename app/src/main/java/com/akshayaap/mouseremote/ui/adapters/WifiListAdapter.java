@@ -10,15 +10,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.akshayaap.mouseremote.R;
+import com.akshayaap.mouseremote.util.Server;
 
 import java.util.ArrayList;
 
 public class WifiListAdapter extends RecyclerView.Adapter<WifiListAdapter.WifiViewHolder> {
     Context context;
-    ArrayList<String> wifiList;
+    ArrayList<Server> wifiList;
     OnItemClickListener clickListener;
 
-    public WifiListAdapter(Context context, ArrayList<String> wifiList) {
+    public WifiListAdapter(Context context, ArrayList<Server> wifiList) {
         this.context = context;
         this.wifiList = wifiList;
     }
@@ -33,7 +34,7 @@ public class WifiListAdapter extends RecyclerView.Adapter<WifiListAdapter.WifiVi
 
     @Override
     public void onBindViewHolder(@NonNull WifiViewHolder holder, int position) {
-        holder.textView_wifiNameTitle.setText(wifiList.get(position));
+        holder.textView_wifiNameTitle.setText(wifiList.get(position).getName());
     }
 
     @Override

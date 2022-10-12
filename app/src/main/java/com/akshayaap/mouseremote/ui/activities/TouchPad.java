@@ -11,17 +11,20 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.akshayaap.mouseremote.abstractfactory.GlobalFactory;
 import com.akshayaap.mouseremote.config.Config;
 import com.akshayaap.mouseremote.R;
-import com.akshayaap.mouseremote.network.Sender;
 import com.akshayaap.mouseremote.io.Event;
+import com.akshayaap.mouseremote.network.UDPSender;
 
+import java.io.IOException;
 import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
+import java.nio.charset.StandardCharsets;
 
 public class TouchPad extends AppCompatActivity {
-    Sender sender;
+    UDPSender messageSender = null;
     int port = 0;
     Event event = new Event();
     InetAddress ip = null;
@@ -38,12 +41,7 @@ public class TouchPad extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_touch_pad);
         port = Config.SERVER_PORT;
-        try {
-            ip = InetAddress.getByName(getIntent().getStringExtra("ip"));
-            sender = new Sender(ip, Config.SERVER_PORT);
-        } catch (UnknownHostException | SocketException e) {
-            e.printStackTrace();
-        }
+        messageSender = GlobalFactory.getFactory().getMessageSender();
 
         ConstraintLayout layout = findViewById(R.id.touchpad);
         ConstraintLayout wheel = findViewById(R.id.wheel);
@@ -71,7 +69,11 @@ public class TouchPad extends AppCompatActivity {
                     if (Xp != 0 && Yp != 0) {
                         event.setDwFlags(Event.MOUSEEVENTF_MOVE);
                         event.setXY(dx, dy);
-                        sender.send(event.toString());
+                        try {
+                            messageSender.send(event.toString().getBytes(StandardCharsets.UTF_8));
+                        } catch (IOException e) {
+                            GlobalFactory.getFactory().getLogger().log("networkerr", "Error Sending Event data:" + e.getMessage());
+                        }
                     }
                     Xp = X;
                     Yp = Y;
@@ -89,13 +91,16 @@ public class TouchPad extends AppCompatActivity {
                 case MotionEvent.ACTION_DOWN:
                     event.setDwFlags(Event.MOUSEEVENTF_LEFTDOWN);
                     event.setXY(0, 0);
-                    sender.send(event.toString());
                     break;
                 case MotionEvent.ACTION_UP:
                     event.setDwFlags(Event.MOUSEEVENTF_LEFTUP);
                     event.setXY(0, 0);
-                    sender.send(event.toString());
                     break;
+            }
+            try {
+                messageSender.send(event.toString().getBytes(StandardCharsets.UTF_8));
+            } catch (IOException e) {
+                GlobalFactory.getFactory().getLogger().log("networkerr", "Error Sending Event data:" + e.getMessage());
             }
             return true;
         });
@@ -106,13 +111,16 @@ public class TouchPad extends AppCompatActivity {
                 case MotionEvent.ACTION_DOWN:
                     event.setDwFlags(Event.MOUSEEVENTF_RIGHTDOWN);
                     event.setXY(0, 0);
-                    sender.send(event.toString());
                     break;
                 case MotionEvent.ACTION_UP:
                     event.setDwFlags(Event.MOUSEEVENTF_RIGHTUP);
                     event.setXY(0, 0);
-                    sender.send(event.toString());
                     break;
+            }
+            try {
+                messageSender.send(event.toString().getBytes(StandardCharsets.UTF_8));
+            } catch (IOException e) {
+                GlobalFactory.getFactory().getLogger().log("networkerr", "Error Sending Event data:" + e.getMessage());
             }
             return true;
         });
@@ -129,8 +137,11 @@ public class TouchPad extends AppCompatActivity {
                     if (Yp != 0) {
                         event.setDwFlags(Event.MOUSEEVENTF_WHEEL);
                         event.setMouseData(dy);
-
-                        sender.send(event.toString());
+                        try {
+                            messageSender.send(event.toString().getBytes(StandardCharsets.UTF_8));
+                        } catch (IOException e) {
+                            GlobalFactory.getFactory().getLogger().log("networkerr", "Error Sending Event data:" + e.getMessage());
+                        }
                     }
                     Yp = Y;
                     break;
@@ -152,7 +163,11 @@ public class TouchPad extends AppCompatActivity {
                     if (Xp != 0) {
                         event.setDwFlags(Event.MOUSEEVENTF_HWHEEL);
                         event.setMouseData(dx);
-                        sender.send(event.toString());
+                        try {
+                            messageSender.send(event.toString().getBytes(StandardCharsets.UTF_8));
+                        } catch (IOException e) {
+                            GlobalFactory.getFactory().getLogger().log("networkerr", "Error Sending Event data:" + e.getMessage());
+                        }
                     }
                     Xp = X;
                     break;
@@ -164,7 +179,7 @@ public class TouchPad extends AppCompatActivity {
 
         event.setType(Event.INPUT_MOUSE);
 
-        imageButton_SwitchToKey.setOnClickListener(v->{
+        imageButton_SwitchToKey.setOnClickListener(v -> {
             startActivity(new Intent(TouchPad.this, Keyboard.class));
         });
     }
@@ -172,22 +187,15 @@ public class TouchPad extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        try {
-            sender = new Sender(InetAddress.getByName(getIntent().getStringExtra("ip")), Config.SERVER_PORT);
-        } catch (SocketException | UnknownHostException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        sender.freeResources();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        sender.freeResources();
     }
 }

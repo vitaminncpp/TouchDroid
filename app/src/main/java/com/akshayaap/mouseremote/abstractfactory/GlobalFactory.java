@@ -7,28 +7,35 @@ import com.akshayaap.mouseremote.io.KeyMap;
 import com.akshayaap.mouseremote.network.UDPReceiver;
 import com.akshayaap.mouseremote.network.UDPSender;
 import com.akshayaap.mouseremote.debug.Logger;
+import com.akshayaap.mouseremote.util.Server;
+import com.akshayaap.mouseremote.util.TaskCompleteCallback;
 
 import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 
 public class GlobalFactory {
     //Shared Global Factory
-    private static GlobalFactory factory;
+    private static GlobalFactory factory = new GlobalFactory();
 
     //Factory members
     private UDPSender messageSender;
     private UDPReceiver echoReceiver;
 
-    private KeyMap keyMap;
+    private final KeyMap keyMap;
+    private final HashMap<String, Server> servers;
 
     //utils
-    private Logger logger;
-    private DebugDatabase dd;
+    private final Logger logger;
+    private final DebugDatabase dd;
 
     private GlobalFactory() {
         keyMap = new KeyMap();
         dd = new DebugDatabase();
+        servers = new HashMap<>();
         logger = new Logger() {
             @Override
             public void log(LoggMessage message) {
@@ -53,16 +60,20 @@ public class GlobalFactory {
         }
     }
 
-    public void createMessageSender(InetAddress address) throws SocketException, UnknownHostException {
+    public UDPSender createMessageSender(InetAddress address) throws SocketException, UnknownHostException {
         if (this.messageSender != null) {
             this.messageSender.close();
         }
         //😆
         this.messageSender = new UDPSender(address, Config.SERVER_PORT);
+        return this.messageSender;
     }
 
     //Returns Global Factory
     public static GlobalFactory getFactory() {
+        if (factory == null) {
+            factory = new GlobalFactory();
+        }
         return factory;
     }
 
@@ -74,8 +85,8 @@ public class GlobalFactory {
         return this.echoReceiver;
     }
 
-    public void setLogger(Logger logger) {
-        this.logger = logger;
+    public void addServer(Server server) {
+        this.servers.put(server.getIp().getHostAddress(), server);
     }
 
     public Logger getLogger() {
@@ -84,5 +95,9 @@ public class GlobalFactory {
 
     public KeyMap getKeyMap() {
         return this.keyMap;
+    }
+
+    public Collection<Server> getServers() {
+        return this.servers.values();
     }
 }

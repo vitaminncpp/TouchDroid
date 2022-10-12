@@ -30,7 +30,7 @@ public class UDPReceiver {
 
     public UDPReceiver(int port) throws SocketException {
         socket = new DatagramSocket(port);
-        packet = new DatagramPacket(null, 0);
+        packet = new DatagramPacket(new byte[4], 4);
         packet.setPort(port);
         this.onReceived = new TaskCompleteCallback() {
             @Override

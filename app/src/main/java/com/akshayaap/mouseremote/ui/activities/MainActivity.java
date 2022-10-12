@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -21,12 +22,15 @@ import com.akshayaap.mouseremote.R;
 import com.akshayaap.mouseremote.debug.LoggMessage;
 import com.akshayaap.mouseremote.network.UDPReceiver;
 import com.akshayaap.mouseremote.ui.adapters.WifiListAdapter;
+import com.akshayaap.mouseremote.util.Server;
+import com.akshayaap.mouseremote.util.TaskCompleteCallback;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -34,9 +38,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView imageView_wifiLogo;
     RecyclerView recyclerView_serverList;
     WifiListAdapter adapter;
-    ArrayList<String> tempWifiList;
-    HashSet<String> ipList;
-    Button scan;
+    ArrayList<Server> tempWifiList;
     Connecting conn = new Connecting();
     int i = 0;
 
@@ -44,8 +46,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        ipList = new HashSet<>(1);
 
         imageView_wifiLogo = findViewById(R.id.imageView_wifiLogo);
         recyclerView_serverList = findViewById(R.id.recyclerView_serverList);
@@ -68,31 +68,18 @@ public class MainActivity extends AppCompatActivity {
             conn.interrupt();
             Log.d("!!!", "onItemClick: " + tempWifiList.get(position));
             Intent myIntent = new Intent(MainActivity.this, TouchPad.class);
-            myIntent.putExtra("ip", tempWifiList.get(position));
+            try {
+                GlobalFactory.getFactory().createMessageSender(tempWifiList.get(position).getIp());
+            } catch (SocketException | UnknownHostException e) {
+                GlobalFactory.getFactory().getLogger().log("networkerr", "Host Not found:" + e.getMessage());
+            }
             startActivity(myIntent);
         });
 
-        scan = findViewById(R.id.scan);
-        scan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        adapter.notifyDataSetChanged();
-                    }
-                });
-            }
-        });
 
         conn.start();
         // new Thread(new TestConn()).start();
         // new Thread(conn).start();
-    }
-
-    public void addHostToLost(InetAddress ip, String name, int i) {
-        this.tempWifiList.add(i, name);
-        this.adapter.notifyItemInserted(i);
     }
 
     public static class CustomViewHolder extends RecyclerView.ViewHolder {
@@ -110,6 +97,20 @@ public class MainActivity extends AppCompatActivity {
         private InetAddress ipAddress = null;
         UDPReceiver echo = GlobalFactory.getFactory().getEchoReceiver();
 
+        public Connecting() {
+            echo.setOnReceivedCallback(new TaskCompleteCallback() {
+                @Override
+                public void complete() {
+                    runOnUiThread(new Thread() {
+                        @Override
+                        public void run() {
+                            adapter.notifyDataSetChanged();
+                        }
+                    });
+                }
+            });
+        }
+
         public void run() {
 
             while (true) {
@@ -120,9 +121,15 @@ public class MainActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     ipAddress = echo.getPacket().getAddress();
-                    ipList.add(ipAddress.getHostAddress());
-                    tempWifiList.clear();
-                    tempWifiList.addAll(ipList);
+                    if (ipAddress != null) {
+                        try {
+                            GlobalFactory.getFactory().addServer(new Server(ipAddress.getHostAddress(), ipAddress.getHostName()));
+                        } catch (UnknownHostException e) {
+                            GlobalFactory.getFactory().getLogger().log("networkerr", "Host Error:" + e.getMessage());
+                        }
+                        tempWifiList.clear();
+                        tempWifiList.addAll(GlobalFactory.getFactory().getServers());
+                    }
                 }
             }
         }

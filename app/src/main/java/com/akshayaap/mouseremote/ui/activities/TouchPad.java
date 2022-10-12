@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -26,9 +27,7 @@ import java.nio.charset.StandardCharsets;
 
 public class TouchPad extends AppCompatActivity {
     UDPSender messageSender = null;
-    int port = 0;
     Event event = new Event();
-    InetAddress ip = null;
     private int X = 0;
     private int Y = 0;
     private int Xp = 0;
@@ -51,11 +50,11 @@ public class TouchPad extends AppCompatActivity {
         TextView txt_ip_port = findViewById(R.id.txt_ip_port);
         ImageButton imageButton_SwitchToKey = findViewById(R.id.imageButton_SwitchToKey);
 
-        txt_ip_port.setText("Connected to " + ip + " : " + port);
 
+        txt_ip_port.setText("Connected to " + messageSender.getPacket().getAddress() + " : " + Config.SERVER_PORT);
         layout.setOnTouchListener((view, motionEvent) -> {
             int eventType = motionEvent.getActionMasked();
-            event.reset();
+            //event.reset();
             switch (eventType) {
                 case MotionEvent.ACTION_UP:
                     Xp = 0;
@@ -74,7 +73,7 @@ public class TouchPad extends AppCompatActivity {
                             messageSender.send(event.toString().getBytes(StandardCharsets.UTF_8));
                         } catch (IOException e) {
                             GlobalFactory.getFactory().getLogger().log("networkerr", "Error Sending Event data:" + e.getMessage());
-                            Log.d("networkerr", "OnSent: Failed to send MotionData");
+                            //Log.d("networkerr", "OnSent: Failed to send MotionData");
                         }
                     }
                     Xp = X;
@@ -87,29 +86,39 @@ public class TouchPad extends AppCompatActivity {
             return true;
         });
 
-        btnLeft.setOnTouchListener((view, motionEvent) -> {
-            int type = motionEvent.getActionMasked();
-            switch (type) {
-                case MotionEvent.ACTION_DOWN:
-                    event.setDwFlags(Event.MOUSEEVENTF_LEFTDOWN);
-                    event.setXY(0, 0);
-                    break;
-                case MotionEvent.ACTION_UP:
-                    event.setDwFlags(Event.MOUSEEVENTF_LEFTUP);
-                    event.setXY(0, 0);
-                    break;
+        btnLeft.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                int type = motionEvent.getActionMasked();
+                //event.reset();
+                switch (type) {
+                    case MotionEvent.ACTION_DOWN:
+                        event.setDwFlags(Event.MOUSEEVENTF_LEFTDOWN);
+                        event.setXY(0, 0);
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        event.setDwFlags(Event.MOUSEEVENTF_LEFTUP);
+                        event.setXY(0, 0);
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        return true;
+
+                }
+                try {
+                    messageSender.send(event.toString().getBytes(StandardCharsets.UTF_8));
+                } catch (IOException e) {
+                    GlobalFactory.getFactory().getLogger().log("networkerr", "Error Sending Event data:" + e.getMessage());
+                    //Log.d("networkerr", "OnSent: Failed to send LetfClick");
+                }
+                return true;
             }
-            try {
-                messageSender.send(event.toString().getBytes(StandardCharsets.UTF_8));
-            } catch (IOException e) {
-                GlobalFactory.getFactory().getLogger().log("networkerr", "Error Sending Event data:" + e.getMessage());
-                Log.d("networkerr", "OnSent: Failed to send LetfClick");
-            }
-            return true;
         });
+
 
         btnRight.setOnTouchListener((view, motionEvent) -> {
             int type = motionEvent.getActionMasked();
+            //event.reset();
             switch (type) {
                 case MotionEvent.ACTION_DOWN:
                     event.setDwFlags(Event.MOUSEEVENTF_RIGHTDOWN);
@@ -117,20 +126,22 @@ public class TouchPad extends AppCompatActivity {
                 case MotionEvent.ACTION_UP:
                     event.setDwFlags(Event.MOUSEEVENTF_RIGHTUP);
                     break;
+                case MotionEvent.ACTION_MOVE:
+                    return true;
             }
             event.setXY(0, 0);
             try {
                 messageSender.send(event.toString().getBytes(StandardCharsets.UTF_8));
             } catch (IOException e) {
                 GlobalFactory.getFactory().getLogger().log("networkerr", "Error Sending Event data:" + e.getMessage());
-                Log.d("networkerr", "OnSent: Failed to send RightClick");
+                //Log.d("networkerr", "OnSent: Failed to send RightClick");
             }
             return true;
         });
 
         wheel.setOnTouchListener((view, motionEvent) -> {
             int type = motionEvent.getActionMasked();
-            event.reset();
+            //event.reset();
             switch (type) {
                 case MotionEvent.ACTION_UP:
                     Yp = 0;
@@ -140,12 +151,17 @@ public class TouchPad extends AppCompatActivity {
                     dy = Y - Yp;
                     if (Yp != 0) {
                         event.setDwFlags(Event.MOUSEEVENTF_WHEEL);
-                        event.setMouseData(dy);
+                        if (dy > 0) {
+                            event.setMouseData(1);
+                        } else if (dy < 0) {
+                            event.setMouseData(-1);
+                        }
+                        //event.setMouseData(dy);
                         try {
                             messageSender.send(event.toString().getBytes(StandardCharsets.UTF_8));
                         } catch (IOException e) {
                             GlobalFactory.getFactory().getLogger().log("networkerr", "Error Sending Event data:" + e.getMessage());
-                            Log.d("networkerr", "OnSent: Failed to send WheelData");
+                            //Log.d("networkerr", "OnSent: Failed to send WheelData");
                         }
                     }
                     Yp = Y;
@@ -158,7 +174,7 @@ public class TouchPad extends AppCompatActivity {
 
         hWheel.setOnTouchListener((view, motionEvent) -> {
             int type = motionEvent.getActionMasked();
-            event.reset();
+            //event.reset();
             switch (type) {
                 case MotionEvent.ACTION_UP:
                     Xp = 0;
@@ -168,12 +184,17 @@ public class TouchPad extends AppCompatActivity {
                     dx = X - Xp;
                     if (Xp != 0) {
                         event.setDwFlags(Event.MOUSEEVENTF_HWHEEL);
-                        event.setMouseData(dx);
+                        if (dx > 0) {
+                            event.setMouseData(1);
+                        } else if (dx < 0) {
+                            event.setMouseData(-1);
+                        }
+                        //event.setMouseData(dx);
                         try {
                             messageSender.send(event.toString().getBytes(StandardCharsets.UTF_8));
                         } catch (IOException e) {
                             GlobalFactory.getFactory().getLogger().log("networkerr", "Error Sending Event data:" + e.getMessage());
-                            Log.d("networkerr", "OnSent: Failed to send HWheelData");
+                            //Log.d("networkerr", "OnSent: Failed to send HWheelData");
                         }
                     }
                     Xp = X;

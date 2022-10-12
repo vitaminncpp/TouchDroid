@@ -4,6 +4,10 @@
 [Rr]elease/
 [Dd]ebug/
 
+!src/**/[Bb]uild/
+!src/**/[Rr]elease/
+!src/**/[Dd]ebug/
+
 # Local configuration file (sdk path, etc)
 local.properties
 

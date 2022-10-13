@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.akshayaap.mouseremote">
+    package="com.akshayaap.touchdroid">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -9,22 +9,22 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
-        android:icon="@drawable/ic_mouseremote"
+        android:icon="@drawable/ic_touchdroid"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/ic_mouseremote"
+        android:roundIcon="@drawable/ic_touchdroid"
         android:supportsRtl="true"
         android:theme="@style/Theme.MouseRemote">
         <activity
-            android:name=".ui.activities.Keyboard"
+            android:name="com.akshayaap.touchdroid.ui.activities.Keyboard"
             android:exported="true"
             android:screenOrientation="landscape" />
 
         <activity
-            android:name=".ui.activities.TouchPad"
+            android:name="com.akshayaap.touchdroid.ui.activities.TouchPad"
             android:exported="true" />
 
         <activity
-            android:name=".ui.activities.MainActivity"
+            android:name="com.akshayaap.touchdroid.ui.activities.MainActivity"
             android:exported="true">
 
             <intent-filter>

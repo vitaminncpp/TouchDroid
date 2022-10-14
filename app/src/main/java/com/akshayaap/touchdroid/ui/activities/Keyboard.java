@@ -1,9 +1,13 @@
 package com.akshayaap.touchdroid.ui.activities;
 
+import android.animation.Animator;
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -98,7 +102,6 @@ public class Keyboard extends AppCompatActivity {
         initKeys();
         handler = new KeyPressedHandler();
         addActionListenersToKeys();
-
         event.setType(Event.INPUT_KEYBOARD);
     }
 
@@ -143,7 +146,7 @@ public class Keyboard extends AppCompatActivity {
         buttonX.setOnTouchListener(handler);
         buttonY.setOnTouchListener(handler);
         buttonZ.setOnTouchListener(handler);
-        
+
     }
 
     private void initKeys() {
@@ -216,10 +219,15 @@ public class Keyboard extends AppCompatActivity {
         buttonDelete = findViewById(R.id.buttonDelete);
     }
 
+    private void initAnimation() {
+
+    }
+
     class KeyPressedHandler implements View.OnTouchListener {
 
         @Override
         public boolean onTouch(View view, MotionEvent motionEvent) {
+            //TODO Animate the button
             int type = motionEvent.getActionMasked();
             switch (type) {
                 case MotionEvent.ACTION_DOWN:
@@ -233,7 +241,7 @@ public class Keyboard extends AppCompatActivity {
                 default:
                     break;
             }
-            event.setwVk((short) GlobalFactory.getFactory().getKeyMap().getKeyCode(view.getId()));
+            event.setwVk((short) GlobalFactory.getFactory().getKeyMap().getVKCode(view.getId()));
             try {
                 GlobalFactory.getFactory().getMessageSender().send(event.toString().getBytes(StandardCharsets.UTF_8));
             } catch (IOException e) {

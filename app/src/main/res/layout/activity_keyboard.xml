@@ -27,7 +27,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/up"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -47,7 +47,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/down"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/buttonRight"
@@ -63,7 +63,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/right"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/buttonUp"
@@ -78,7 +78,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/left"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/buttonUp"
@@ -93,7 +93,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/prtscr"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/buttonRCtrl"
             app:layout_constraintTop_toBottomOf="@+id/buttonSlash" />
@@ -108,7 +108,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/insert"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="12sp"
             app:layout_constraintEnd_toStartOf="@+id/buttonDelete"
             app:layout_constraintStart_toEndOf="@+id/buttonPrintScr"
@@ -123,7 +123,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/delete"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/buttonInsert"
             app:layout_constraintTop_toBottomOf="@+id/buttonRShift" />
@@ -137,7 +137,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/dot"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/buttonComma"
             app:layout_constraintTop_toBottomOf="@+id/buttonSemiColon" />
 
@@ -150,7 +150,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/comma"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/buttonM"
             app:layout_constraintTop_toBottomOf="@+id/buttonK" />
 
@@ -163,7 +163,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/slash"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/buttonDot"
             app:layout_constraintTop_toBottomOf="@+id/buttonSemiColon" />
 
@@ -176,7 +176,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/windows"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/buttonLCtrl"
             app:layout_constraintTop_toBottomOf="@+id/buttonLShift" />
@@ -190,7 +190,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/alt"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/buttonWindows"
             app:layout_constraintTop_toBottomOf="@+id/buttonZ" />
@@ -204,7 +204,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/ctrl"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/buttonRAlt"
             app:layout_constraintTop_toBottomOf="@+id/buttonDot" />
@@ -218,7 +218,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/alt"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/buttonSpace"
             app:layout_constraintTop_toBottomOf="@+id/buttonComma" />
@@ -232,7 +232,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/space"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/buttonLAlt"
             app:layout_constraintTop_toBottomOf="@+id/buttonM" />
@@ -246,7 +246,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/shift"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/buttonSlash"
             app:layout_constraintTop_toBottomOf="@+id/buttonEnter" />
 
@@ -259,7 +259,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/z"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/buttonLShift"
             app:layout_constraintTop_toBottomOf="@+id/buttonA" />
 
@@ -272,7 +272,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/m"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/buttonN"
             app:layout_constraintTop_toBottomOf="@+id/buttonJ" />
 
@@ -285,7 +285,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/c"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/buttonX"
             app:layout_constraintTop_toBottomOf="@+id/buttonF" />
 
@@ -298,7 +298,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/b"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/buttonV"
             app:layout_constraintTop_toBottomOf="@+id/buttonG" />
 
@@ -311,7 +311,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/v"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/buttonC"
             app:layout_constraintTop_toBottomOf="@+id/buttonF" />
 
@@ -324,7 +324,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/n"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/buttonB"
             app:layout_constraintTop_toBottomOf="@+id/buttonJ" />
 
@@ -337,7 +337,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/x"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/buttonZ"
             app:layout_constraintTop_toBottomOf="@+id/buttonS" />
 
@@ -350,7 +350,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/enter"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/buttonQuote"
             app:layout_constraintTop_toBottomOf="@+id/buttonBackslash" />
 
@@ -363,7 +363,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/semicolon"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/buttonL"
             app:layout_constraintTop_toBottomOf="@+id/buttonSqOpen" />
 
@@ -376,7 +376,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/quote"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/buttonSemiColon"
             app:layout_constraintTop_toBottomOf="@+id/buttonSqOpen" />
 
@@ -389,7 +389,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/a"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/buttonCaps"
             app:layout_constraintTop_toBottomOf="@+id/buttonQ" />
 
@@ -402,7 +402,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/s"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/buttonA"
             app:layout_constraintTop_toBottomOf="@+id/buttonE" />
 
@@ -415,7 +415,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/j"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/buttonH"
             app:layout_constraintTop_toBottomOf="@+id/buttonI" />
 
@@ -428,7 +428,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/f"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/buttonD"
             app:layout_constraintTop_toBottomOf="@+id/buttonT" />
 
@@ -441,7 +441,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/k"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/buttonJ"
             app:layout_constraintTop_toBottomOf="@+id/buttonO" />
 
@@ -454,7 +454,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/g"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/buttonF"
             app:layout_constraintTop_toBottomOf="@+id/buttonT" />
 
@@ -467,7 +467,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/l"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/buttonK"
             app:layout_constraintTop_toBottomOf="@+id/buttonP" />
 
@@ -480,7 +480,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/h"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/buttonG"
             app:layout_constraintTop_toBottomOf="@+id/buttonY" />
 
@@ -493,7 +493,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/d"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/buttonS"
             app:layout_constraintTop_toBottomOf="@+id/buttonE" />
 
@@ -506,7 +506,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/backslash"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/buttonSqClose"
             app:layout_constraintTop_toBottomOf="@+id/buttonBackspace" />
 
@@ -519,7 +519,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/sq_braces_open"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/buttonP"
             app:layout_constraintTop_toBottomOf="@+id/buttonUnderscore" />
 
@@ -532,7 +532,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/sq_braces_close"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/buttonSqOpen"
             app:layout_constraintTop_toBottomOf="@+id/buttonBackspace" />
 
@@ -545,7 +545,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/q"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/buttonTab"
             app:layout_constraintTop_toBottomOf="@+id/button1" />
 
@@ -558,7 +558,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/t"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/buttonR"
             app:layout_constraintTop_toBottomOf="@+id/button6" />
 
@@ -571,7 +571,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/y"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/buttonT"
             app:layout_constraintTop_toBottomOf="@+id/button7" />
 
@@ -584,7 +584,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/p"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/buttonO"
             app:layout_constraintTop_toBottomOf="@+id/buttonUnderscore" />
 
@@ -597,7 +597,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/o"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/buttonI"
             app:layout_constraintTop_toBottomOf="@+id/button9" />
 
@@ -610,7 +610,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/e"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/buttonW"
             app:layout_constraintTop_toBottomOf="@+id/button4" />
 
@@ -623,7 +623,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/i"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/buttonU"
             app:layout_constraintTop_toBottomOf="@+id/button9" />
 
@@ -636,7 +636,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/r"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/buttonE"
             app:layout_constraintTop_toBottomOf="@+id/button4" />
 
@@ -649,7 +649,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/w"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/buttonQ"
             app:layout_constraintTop_toBottomOf="@+id/button2" />
 
@@ -662,7 +662,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/u"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/buttonY"
             app:layout_constraintTop_toBottomOf="@+id/button7" />
 
@@ -675,7 +675,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/backspace"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/buttonEquals"
             app:layout_constraintTop_toTopOf="parent" />
@@ -689,7 +689,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/underscore"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/button0"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -702,7 +702,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/equals"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/buttonUnderscore"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -715,7 +715,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/_7"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/button6"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -728,7 +728,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/_9"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/button8"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -741,7 +741,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/_0"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/button9"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -754,7 +754,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/_8"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/button7"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -767,7 +767,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/_4"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/button3"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -780,7 +780,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/_6"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/button5"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -793,7 +793,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/_5"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/button4"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -806,7 +806,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/tiddle"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -819,7 +819,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/_1"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/buttonTiddle"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -832,7 +832,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/_2"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/button1"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -845,7 +845,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/_3"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/button2"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -858,7 +858,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/tab"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonTiddle" />
 
@@ -871,7 +871,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/caps"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonTab" />
 
@@ -884,7 +884,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/shift"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonCaps" />
 
@@ -897,7 +897,7 @@
             android:backgroundTint="@color/primary"
             android:text="@string/ctrl"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonLShift" />

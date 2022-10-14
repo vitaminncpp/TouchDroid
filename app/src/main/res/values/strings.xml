@@ -49,7 +49,7 @@
     <string name="h">H</string>
     <string name="d">D</string>
     <string name="backslash">\\</string>
-    <string name="sq_braces_open">[<br />{</string>
+    <string name="sq_braces_open">[</string>
     <string name="sq_braces_close">]</string>
     <string name="q">Q</string>
     <string name="t">T</string>
@@ -76,6 +76,6 @@
     <string name="tab">Tab</string>
     <string name="caps">Caps</string>
     <string name="delete">Del</string>
-    <string name="backspace"><![CDATA[<-]]></string>
+    <string name="backspace">←</string>
     <string name="_0">0</string>
 </resources>

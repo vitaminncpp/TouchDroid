@@ -8,8 +8,12 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.akshayaap.mouseremote.R;
+import com.akshayaap.touchdroid.R;
+import com.akshayaap.touchdroid.abstractfactory.GlobalFactory;
 import com.akshayaap.touchdroid.io.Event;
+
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 public class Keyboard extends AppCompatActivity {
 
@@ -23,6 +27,7 @@ public class Keyboard extends AppCompatActivity {
 
     private Button buttonA;
     private Button buttonB;
+    private Button buttonC;
     private Button buttonD;
     private Button buttonE;
     private Button buttonF;
@@ -101,6 +106,44 @@ public class Keyboard extends AppCompatActivity {
     private void addActionListenersToKeys() {
         button0.setOnTouchListener(handler);
         button1.setOnTouchListener(handler);
+        button2.setOnTouchListener(handler);
+        button3.setOnTouchListener(handler);
+        button4.setOnTouchListener(handler);
+        button5.setOnTouchListener(handler);
+        button6.setOnTouchListener(handler);
+        button7.setOnTouchListener(handler);
+        button8.setOnTouchListener(handler);
+        button9.setOnTouchListener(handler);
+
+        buttonA.setOnTouchListener(handler);
+        buttonB.setOnTouchListener(handler);
+        buttonC.setOnTouchListener(handler);
+        buttonD.setOnTouchListener(handler);
+        buttonE.setOnTouchListener(handler);
+        buttonF.setOnTouchListener(handler);
+
+        buttonG.setOnTouchListener(handler);
+        buttonH.setOnTouchListener(handler);
+        buttonI.setOnTouchListener(handler);
+        buttonJ.setOnTouchListener(handler);
+        buttonK.setOnTouchListener(handler);
+        buttonL.setOnTouchListener(handler);
+
+        buttonM.setOnTouchListener(handler);
+        buttonN.setOnTouchListener(handler);
+        buttonO.setOnTouchListener(handler);
+        buttonP.setOnTouchListener(handler);
+        buttonQ.setOnTouchListener(handler);
+        buttonS.setOnTouchListener(handler);
+
+        buttonT.setOnTouchListener(handler);
+        buttonU.setOnTouchListener(handler);
+        buttonV.setOnTouchListener(handler);
+        buttonW.setOnTouchListener(handler);
+        buttonX.setOnTouchListener(handler);
+        buttonY.setOnTouchListener(handler);
+        buttonZ.setOnTouchListener(handler);
+        
     }
 
     private void initKeys() {
@@ -111,6 +154,7 @@ public class Keyboard extends AppCompatActivity {
         buttonRight = findViewById(R.id.buttonRight);
         buttonA = findViewById(R.id.buttonA);
         buttonB = findViewById(R.id.buttonB);
+        buttonC = findViewById(R.id.buttonC);
         buttonD = findViewById(R.id.buttonD);
         buttonE = findViewById(R.id.buttonE);
         buttonF = findViewById(R.id.buttonF);
@@ -188,6 +232,12 @@ public class Keyboard extends AppCompatActivity {
                     return true;
                 default:
                     break;
+            }
+            event.setwVk((short) GlobalFactory.getFactory().getKeyMap().getKeyCode(view.getId()));
+            try {
+                GlobalFactory.getFactory().getMessageSender().send(event.toString().getBytes(StandardCharsets.UTF_8));
+            } catch (IOException e) {
+                GlobalFactory.getFactory().getLogger().log("networkerr", "Error Sending KeyEvent: " + e.getMessage());
             }
             return true;
         }

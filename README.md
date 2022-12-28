@@ -1,7 +1,12 @@
 # MouseRemote
 - A MouseRemote project was initiated as the solution of controlling computer via Local Network. MouseRemote is Android Application which emulates the behaviour of touchpad of Laptop computer. [MouseRemoteServer](https://www.github.com/Akshayaap/MouseRemoteServer) is required to be run in Computer in order to control Computer Remotely.
-- An Application is available via [This Repo](https://apt.izzysoft.de/fdroid/index/apk/com.akshayaap.mouseremote)
-  
+
+[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
+     alt="Get it on F-Droid"
+     height="80">](https://f-droid.org/packages/com.akshayaap.mouseremote/)
+
+Or get the APK from the [Releases section](https://github.com/Akshayaap/TouchDroid/releases/latest).
+
   ## Table of Content
   - [Technologies](#technologies)
   - [Setup](#setup)
@@ -21,7 +26,7 @@
   ## Setup
   ### For Users
   - Download the zip file from the [MouseRemoteServer](https://www.github.com/Akshayaap/MouseRemoteServer).
-  - Install android [MouseRemote](https://wwww.github.com/Akshayaap/MouseRemote) apk.
+  - Install android MouseRemote APK either from [F-Droid](https://f-droid.org/packages/com.akshayaap.mouseremote/) or from the [Releases Section](https://github.com/Akshayaap/TouchDroid/releases/latest).
   - Extract MouseRemoteServer.zip at your favorite location in your Windows PC.
   - Run `ControlPanel.exe`.
   - Now you will be able to control Server.

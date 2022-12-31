@@ -1,13 +1,9 @@
 package com.akshayaap.touchdroid.ui.activities;
 
-import android.animation.Animator;
-import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -68,7 +64,6 @@ public class Keyboard extends AppCompatActivity {
     private Button button0;
 
     private Button buttonTiddle;
-    private Button buttonUnderscore;
     private Button buttonEquals;
     private Button buttonBackspace;
     private Button buttonTab;
@@ -95,6 +90,25 @@ public class Keyboard extends AppCompatActivity {
     private Button buttonInsert;
     private Button buttonDelete;
 
+    private Button buttonEsc;
+    private Button buttonEnd;
+
+    private Button buttonMinus;
+
+    //function keys
+    private Button F1;
+    private Button F2;
+    private Button F3;
+    private Button F4;
+    private Button F5;
+    private Button F6;
+    private Button F7;
+    private Button F8;
+    private Button F9;
+    private Button F10;
+    private Button F11;
+    private Button F12;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,6 +121,7 @@ public class Keyboard extends AppCompatActivity {
 
     @SuppressLint("ClickableViewAccessibility")
     private void addActionListenersToKeys() {
+
         button0.setOnTouchListener(handler);
         button1.setOnTouchListener(handler);
         button2.setOnTouchListener(handler);
@@ -147,6 +162,57 @@ public class Keyboard extends AppCompatActivity {
         buttonY.setOnTouchListener(handler);
         buttonZ.setOnTouchListener(handler);
 
+        //special characters
+        buttonSpace.setOnTouchListener(handler);
+        buttonTab.setOnTouchListener(handler);
+        buttonCaps.setOnTouchListener(handler);
+        buttonBackspace.setOnTouchListener(handler);
+        buttonBackslash.setOnTouchListener(handler);
+        buttonTiddle.setOnTouchListener(handler);
+        buttonComma.setOnTouchListener(handler);
+        buttonSemiColon.setOnTouchListener(handler);
+        buttonMinus.setOnTouchListener(handler);
+        buttonQuote.setOnTouchListener(handler);
+        buttonSqClose.setOnTouchListener(handler);
+        buttonSqOpen.setOnTouchListener(handler);
+        buttonSlash.setOnTouchListener(handler);
+        buttonBackslash.setOnTouchListener(handler);
+        buttonDot.setOnTouchListener(handler);
+        buttonEquals.setOnTouchListener(handler);
+
+        //System keys
+        buttonEnter.setOnTouchListener(handler);
+        buttonLCtrl.setOnTouchListener(handler);
+        buttonRCtrl.setOnTouchListener(handler);
+        buttonLShift.setOnTouchListener(handler);
+        buttonRShift.setOnTouchListener(handler);
+        buttonLAlt.setOnTouchListener(handler);
+        buttonRAlt.setOnTouchListener(handler);
+        buttonWindows.setOnTouchListener(handler);
+        buttonEsc.setOnTouchListener(handler);
+        buttonEnd.setOnTouchListener(handler);
+        buttonPrintScr.setOnTouchListener(handler);
+        buttonInsert.setOnTouchListener(handler);
+        buttonDelete.setOnTouchListener(handler);
+
+        //arrow keys
+        buttonLeft.setOnTouchListener(handler);
+        buttonRight.setOnTouchListener(handler);
+        buttonUp.setOnTouchListener(handler);
+        buttonDown.setOnTouchListener(handler);
+        //functions keys
+        F1.setOnTouchListener(handler);
+        F2.setOnTouchListener(handler);
+        F3.setOnTouchListener(handler);
+        F4.setOnTouchListener(handler);
+        F5.setOnTouchListener(handler);
+        F6.setOnTouchListener(handler);
+        F7.setOnTouchListener(handler);
+        F8.setOnTouchListener(handler);
+        F9.setOnTouchListener(handler);
+        F10.setOnTouchListener(handler);
+        F11.setOnTouchListener(handler);
+        F12.setOnTouchListener(handler);
     }
 
     private void initKeys() {
@@ -192,7 +258,7 @@ public class Keyboard extends AppCompatActivity {
         button9 = findViewById(R.id.button9);
         button0 = findViewById(R.id.button0);
         buttonTiddle = findViewById(R.id.buttonTiddle);
-        buttonUnderscore = findViewById(R.id.buttonUnderscore);
+        buttonMinus = findViewById(R.id.buttonMinus);
         buttonEquals = findViewById(R.id.buttonEquals);
         buttonBackspace = findViewById(R.id.buttonBackspace);
         buttonTab = findViewById(R.id.buttonTab);
@@ -217,6 +283,22 @@ public class Keyboard extends AppCompatActivity {
         buttonPrintScr = findViewById(R.id.buttonPrintScr);
         buttonInsert = findViewById(R.id.buttonInsert);
         buttonDelete = findViewById(R.id.buttonDelete);
+        buttonEsc = findViewById(R.id.buttonEsc);
+        buttonEnd = findViewById(R.id.buttonEnd);
+
+        //function keys
+        F1 = findViewById(R.id.buttonF1);
+        F2 = findViewById(R.id.buttonF2);
+        F3 = findViewById(R.id.buttonF3);
+        F4 = findViewById(R.id.buttonF4);
+        F5 = findViewById(R.id.buttonF5);
+        F6 = findViewById(R.id.buttonF6);
+        F7 = findViewById(R.id.buttonF7);
+        F8 = findViewById(R.id.buttonF8);
+        F9 = findViewById(R.id.buttonF9);
+        F10 = findViewById(R.id.buttonF10);
+        F11 = findViewById(R.id.buttonF11);
+        F12 = findViewById(R.id.buttonF12);
     }
 
     private void initAnimation() {

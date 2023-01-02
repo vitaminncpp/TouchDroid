@@ -1,1 +1,1 @@
-use your Android device as a laptop touchpad via local Network
+Use your Android Device as Touchpad.

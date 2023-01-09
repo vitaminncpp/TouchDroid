@@ -1,6 +1,6 @@
 # TouchDroid
 - TouchDroid is an Android Application to Emulate inpute devices i.e. Touchpad and Keyborad to control Windows computer via local Network. [TouchServer](https://www.github.com/Akshayaap/TouchServer) is reuired to be Running on Windows Operating System in order to capture data sent by Application from network and to register Appropreate events to Host Operating System.
-- An older version of the Application is available via [This Repo](https://apt.izzysoft.de/fdroid/index/apk/com.akshayaap.mouseremote) and [F-Droid](https://f-droid.org/packages/com.akshayaap.mouseremote) repo.
+- An older version of the Application is available via [This Repo](https://apt.izzysoft.de/fdroid/index/apk/com.akshayaap.touchdroid) and [F-Droid](https://f-droid.org/packages/com.akshayaap.mouseremote) repo.
   
   ## Table of Content
   - [Technologies](#technologies)

@@ -1,0 +1,2 @@
+Added Keyboard.
+Compatible with TouchServer 1.4.0 and above.

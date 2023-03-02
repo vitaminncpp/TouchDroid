@@ -46,7 +46,8 @@
 ## Donate
 
 [https://paypal.me/akshayaap](https://paypal.me/akshayaap)
-Bitcoin: bitcoin:1HhM7vudZU7gmooamWNZG8couZdg1eF1Uw
+
+Bitcoin: [bitcoin:1HhM7vudZU7gmooamWNZG8couZdg1eF1Uw](bitcoin:1HhM7vudZU7gmooamWNZG8couZdg1eF1Uw)
 
   ## Contributors
   - @vitaminncpp- [Akshay Parmar](https://github.com/vitaminncpp).

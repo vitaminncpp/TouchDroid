@@ -21,9 +21,9 @@
   
   ## Setup
   ### For Users
-  - Download the zip file from the [TouchServer](https://www.github.com/Akshayaap/TouchServer).
+  - Download the zip file from the [TouchServer](https://www.github.com/vitaminncpp/TouchServer).
   - Install android [TouchDroid](https://wwww.github.com/Akshayaap/TouchDroid) apk.
-  - Extract MouseRemoteServer.zip at your favorite location in your Windows PC.
+  - Extract TouchServer.zip at your favorite location in your Windows PC.
   - Run `UI.exe`.
   - Now you will be able to control Server.
   - Open MouseRemote application in android.
@@ -31,7 +31,7 @@
   - There will be touch area, Left and Right Buttons and Wheel.
   <br/><br/>
   Note: **The mobile and server must be in same network**
-  For More See: [Documentation](https://www.github.com/Akshayaap/Documentation).
+  For More See: [Documentation](https://www.github.com/vitaminncpp/Documentation).
   
   ## Working
   How the program works:-
@@ -43,6 +43,11 @@
   Some screenshots of the program:-
   - ***Under progress***
   
+## Donate
+
+[https://paypal.me/akshayaap](https://paypal.me/akshayaap)
+Bitcoin: bitcoin:1HhM7vudZU7gmooamWNZG8couZdg1eF1Uw
+
   ## Contributors
-  - @Akshayaap- [Akshay Parmar](https://github.com/Akshayaap).
+  - @vitaminncpp- [Akshay Parmar](https://github.com/vitaminncpp).
   - @SKR301- [Saurav Kumar](https://github.com/SKR301).

@@ -1,47 +1,65 @@
 # TouchDroid
-TouchDroid is an Android application that emulates input devices, specifically a touchpad and keyboard, to control a Windows computer via a local network. A desktop server application called TouchServer is required to be running on the Windows operating system in order to capture data sent by the application over the network and to register appropriate events to the host operating system.
 
-An older version of the application is available through this repository and on the F-Droid repository.
+TouchDroid is an Android application that emulates input devices such as a touchpad and keyboard to control a Windows computer via a local network. A [TouchServer](https://www.github.com/Akshayaap/TouchServer) must be running on the Windows operating system to capture data sent by the application from the network and to register appropriate events to the host operating system.
 
-Table of Contents
-Technologies
-Setup
-How it Works
-Screenshots
-Contributors
-Technologies
-Desktop Server Application
-C++
-C#
-Android Application
-Java v17
-Android Studio
-Setup
-For Users
-Download the ZIP file of the TouchServer desktop server application from TouchServer.
-Install the TouchDroid APK on your Android device.
-Extract the TouchServer.zip file to your preferred location on your Windows PC.
-Run the UI.exe file.
-You should now be able to control your server.
-Open the MouseRemote application on your Android device.
-The app will connect to the server automatically.
-You will see a touch area, left and right buttons, and a wheel.
-Note: Your mobile device and server must be on the same network. For more information, refer to the documentation.
+An older version of the application is available via [this repository](https://apt.izzysoft.de/fdroid/index/apk/com.akshayaap.touchdroid) and the [F-Droid repository](https://f-droid.org/packages/com.akshayaap.touchdroid/).
 
-How it Works
+## Table of Contents
+
+- [Technologies](#technologies)
+- [Setup](#setup)
+- [Working](#working)
+- [Screenshots](#screenshots)
+- [Contributors](#contributors)
+
+## Technologies
+
+### For Desktop Server Application
+
+- C++
+- C#
+
+### For Android Application
+
+- Java v17
+- Android Studio
+
+## Setup
+
+### For Users
+
+1. Download the zip file from the [TouchServer repository](https://www.github.com/vitaminncpp/TouchServer).
+2. Install the TouchDroid APK for Android.
+3. Extract TouchServer.zip to your desired location on your Windows PC.
+4. Run `UI.exe`.
+5. You can now control the server.
+6. Open the MouseRemote application on Android.
+7. The app will connect to the server automatically.
+8. There will be a touch area, left and right buttons, and a wheel.
+
+Note: **The mobile and server must be on the same network.** For more information, see the [documentation](https://www.github.com/vitaminncpp/Documentation).
+
+## Working
+
 To use the program:
 
-Press "Start" from the desktop GUI to start.
-Press "Stop" from the desktop GUI to stop.
-You can then easily control your computer by using your phone as a touchpad.
-Screenshots
-Currently under progress.
+1. Press `Start` from the desktop GUI to start.
+2. Press `Stop` from the desktop GUI to stop.
+3. You can then easily control your computer by using your phone as a touchpad.
 
-Donate
-If you find this application useful and wish to support the developers, you can donate through the following means:
+## Screenshots
 
-PayPal: https://paypal.me/akshayaap
-Bitcoin: bitcoin:1HhM7vudZU7gmooamWNZG8couZdg1eF1Uw
-Contributors
-Akshay Parmar (@vitaminncpp)
-Saurav Kumar (@SKR301)
+Some screenshots of the program:
+
+- *Under progress*
+
+## Donate
+
+[https://paypal.me/akshayaap](https://paypal.me/akshayaap)
+
+Bitcoin: [bitcoin:1HhM7vudZU7gmooamWNZG8couZdg1eF1Uw](bitcoin:1HhM7vudZU7gmooamWNZG8couZdg1eF1Uw)
+
+## Contributors
+
+- [@vitaminncpp](https://github.com/vitaminncpp) - Akshay Parmar
+- [@SKR301](https://github.com/SKR301) - Saurav Kumar

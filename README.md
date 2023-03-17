@@ -1,6 +1,6 @@
 # TouchDroid
 
-TouchDroid is an Android application that emulates input devices such as touchpad and keyboard to control a Windows computer via a local network. To capture data sent by the application from the network and register appropriate events to the host operating system, the TouchServer application is required to be running on the Windows operating system.
+TouchDroid is an Android app that allows users to remotely control a Windows computer via a local network. It emulates input devices such as touchpad and keyboard. To make this possible, the TouchServer app must be installed and running on the Windows OS. TouchServer acts as a mediator between TouchDroid and the host OS, translating input data into commands that the host OS can understand.
 
 An older version of the application is available via [this repository](https://apt.izzysoft.de/fdroid/index/apk/com.akshayaap.touchdroid) and on the [F-Droid](https://f-droid.org/packages/com.akshayaap.touchdroid) repository.
 

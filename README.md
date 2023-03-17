@@ -20,14 +20,14 @@ An older version of the application is available via [this repository](https://a
 
 ### For Users
 
-1. Download the zip file from the [TouchServer repository](https://www.github.com/vitaminncpp/TouchServer).
+1. Download the [TouchServer](https://github.com/vitaminncpp/TouchDroid) repository's zip file.
 2. Install the TouchDroid APK on your Android device.
-3. Extract TouchServer.zip to your preferred location on your Windows PC.
-4. Run `UI.exe`.
-5. You should now be able to control the server.
-6. Open the MouseRemote application on your Android device.
-7. The app will automatically connect to the server.
-8. There will be a touch area, left and right buttons, and a wheel.
+3. Extract the contents of the TouchServer.zip file to your preferred location on your Windows PC.
+4. Run the `UI.exe` file.
+5. Now, you can control the server using TouchDroid.
+6. Open the TouchDroid app on your Android device.
+7. The app will connect to the server automatically.
+8. You will see a touch area, left and right buttons, and a wheel on the app interface, which you can use to control the Windows computer remotely.
 
 Note: **The mobile device and the server must be on the same network.** For more information, see the [documentation](https://www.github.com/vitaminncpp/Documentation).
 

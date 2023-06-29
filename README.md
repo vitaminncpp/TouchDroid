@@ -20,7 +20,7 @@ An older version of the application is available via [this repository](https://a
 
 ### For Users
 
-1. Download the [TouchServer](https://github.com/vitaminncpp/TouchDroid) repository's zip file.
+1. Download the [TouchServer](https://github.com/vitaminncpp/TouchServer) repository's zip file.
 2. Install the TouchDroid APK on your Android device.
 3. Extract the contents of the TouchServer.zip file to your preferred location on your Windows PC.
 4. Run the `UI.exe` file.

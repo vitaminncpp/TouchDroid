@@ -3,12 +3,12 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.akshayaap.touchdroid"
         minSdk 23
-        targetSdk 32
+        targetSdk 33
         versionCode 7
         versionName "2.0.1"
 
@@ -25,6 +25,8 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    namespace 'com.akshayaap.touchdroid'
+    buildToolsVersion '32.0.0'
 }
 
 dependencies {

@@ -50,7 +50,6 @@ Some screenshots of the program:
 If you find this application useful, you can donate to the developer:
 
 - PayPal: [https://paypal.me/akshayaap](https://paypal.me/akshayaap)
-- Bitcoin: [bitcoin:1HhM7vudZU7gmooamWNZG8couZdg1eF1Uw](bitcoin:1HhM7vudZU7gmooamWNZG8couZdg1eF1Uw)
 
 ## Contributors
 

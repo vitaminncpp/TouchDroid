@@ -14,12 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MouseRemote">
         <activity
-            android:name=".ui.activities.DebugerList"
+            android:name=".ui.activities.Debugger"
             android:exported="false" />
         <activity
             android:name=".ui.activities.Keyboard"
-            android:exported="true"
-            android:screenOrientation="landscape" />
+            android:exported="true" />
         <activity
             android:name=".ui.activities.TouchPad"
             android:exported="true" />

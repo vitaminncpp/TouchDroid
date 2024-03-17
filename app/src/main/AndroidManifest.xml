@@ -15,7 +15,7 @@
         android:theme="@style/Theme.MouseRemote">
         <activity
             android:name=".ui.activities.Debugger"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".ui.activities.Keyboard"
             android:exported="true" />

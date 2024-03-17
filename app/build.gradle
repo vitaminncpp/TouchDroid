@@ -26,7 +26,6 @@ android {
         targetCompatibility JavaVersion.VERSION_17
     }
     namespace 'com.akshayaap.touchdroid'
-    buildToolsVersion '34.0.0'
 }
 
 dependencies {

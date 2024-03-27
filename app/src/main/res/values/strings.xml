@@ -78,4 +78,11 @@
     <string name="delete">Del</string>
     <string name="backspace">←</string>
     <string name="_0">0</string>
+    <string name="menu_network">Network</string>
+    <string name="menu_touchpad">TouchPad</string>
+    <string name="menu_keyboard">Keyboard</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_debug">Debug</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

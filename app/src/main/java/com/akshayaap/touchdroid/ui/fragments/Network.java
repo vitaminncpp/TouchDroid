@@ -22,6 +22,7 @@ import com.akshayaap.touchdroid.network.UDPReceiver;
 import com.akshayaap.touchdroid.ui.adapters.WifiListAdapter;
 import com.akshayaap.touchdroid.util.Server;
 import com.akshayaap.touchdroid.util.TaskCompleteCallback;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -34,10 +35,11 @@ public class Network extends Fragment {
     RecyclerView serverListView;
     WifiListAdapter adapter;
     ArrayList<Server> networkList;
-    ConnectionThread connection = new ConnectionThread();
+    ConnectionThread connection = null;
 
     public Network() {
-
+        GlobalFactory.getFactory().createEchoReceiver();
+        connection = new ConnectionThread();
     }
 
     @Override
@@ -62,10 +64,9 @@ public class Network extends Fragment {
 
         adapter.setOnItemClickListener(position -> {
             this.connection.terminate();
-            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, new Touchpad());
-            fragmentTransaction.commit();
+            BottomNavigationView nav = ((BottomNavigationView) getActivity().findViewById(R.id.bottomNavigation));
+            Log.d("debug", String.valueOf(nav));
+            nav.setSelectedItemId(R.id.nav_touchpad);
             GlobalFactory.getFactory().createMessageSender(networkList.get(position).getIp());
             GlobalFactory.getFactory().terminateEchoReceiver();
         });

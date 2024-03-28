@@ -49,12 +49,16 @@ public class GlobalFactory {
     }
 
     private void init() {
+    }
+
+    public UDPReceiver createEchoReceiver() {
         try {
             this.echoReceiver = new UDPReceiver(Config.ECHO_PORT);
         } catch (SocketException e) {
             LoggMessage message = new LoggMessage("networkerr", "Network Error:" + e.getMessage(), Thread.currentThread().getStackTrace());
             logger.log(message);
         }
+        return this.echoReceiver;
     }
 
     public UDPSender createMessageSender(InetAddress address) {

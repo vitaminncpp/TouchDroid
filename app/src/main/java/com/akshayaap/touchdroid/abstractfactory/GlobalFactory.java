@@ -70,6 +70,10 @@ public class GlobalFactory {
         return this.messageSender;
     }
 
+    public void terminateEchoReceiver() {
+        this.echoReceiver.close();
+    }
+
     //Returns Global Factory
     public static GlobalFactory getFactory() {
         if (factory == null) {

@@ -2,11 +2,11 @@ package com.akshayaap.touchdroid.abstractfactory;
 
 import com.akshayaap.touchdroid.config.Config;
 import com.akshayaap.touchdroid.debug.DebugDatabase;
-import com.akshayaap.touchdroid.debug.LoggMessage;
+import com.akshayaap.touchdroid.util.logger.LoggMessage;
 import com.akshayaap.touchdroid.io.KeyMap;
 import com.akshayaap.touchdroid.network.UDPReceiver;
 import com.akshayaap.touchdroid.network.UDPSender;
-import com.akshayaap.touchdroid.debug.Logger;
+import com.akshayaap.touchdroid.util.logger.Logger;
 import com.akshayaap.touchdroid.util.Server;
 
 import java.net.InetAddress;

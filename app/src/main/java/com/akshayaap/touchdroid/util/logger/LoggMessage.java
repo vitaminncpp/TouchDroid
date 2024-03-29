@@ -1,4 +1,4 @@
-package com.akshayaap.touchdroid.debug;
+package com.akshayaap.touchdroid.util.logger;
 
 import java.util.Arrays;
 

@@ -57,8 +57,6 @@ public class Touchpad extends Fragment {
         ConstraintLayout hWheel = this.view.findViewById(R.id.hWheel);
         Button btnLeft = this.view.findViewById(R.id.btnLeft);
         Button btnRight = this.view.findViewById(R.id.btnRight);
-        TextView txt_ip_port = this.view.findViewById(R.id.txt_ip_port);
-        txt_ip_port.setText("Connected to " + messageSender.getPacket().getAddress() + " : " + Config.SERVER_PORT);
         layout.setOnTouchListener((v, motionEvent) -> {
             int eventType = motionEvent.getActionMasked();
             //event.reset();
@@ -80,7 +78,6 @@ public class Touchpad extends Fragment {
                             messageSender.send(event.toString().getBytes(StandardCharsets.UTF_8));
                         } catch (IOException e) {
                             GlobalFactory.getFactory().getLogger().log("networkerr", "Error Sending Event data:" + e.getMessage());
-                            //Log.d("networkerr", "OnSent: Failed to send MotionData");
                         }
                     }
                     Xp = X;

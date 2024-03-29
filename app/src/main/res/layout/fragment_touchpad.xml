@@ -6,17 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.Touchpad">
 
-    <TextView
-        android:id="@+id/txt_ip_port"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/waiting"
-        android:textColor="@color/grey"
-        android:translationZ="100dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -78,21 +67,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="3"
-            android:foreground="@drawable/button_background">
-
-            <ImageButton
-                android:id="@+id/debugger"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="@color/grey"
-                android:backgroundTint="@color/grey"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:srcCompat="@drawable/ic_port_keyboard"
-                tools:ignore="ContentDescription" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            android:foreground="@drawable/button_background"/>
 
     </LinearLayout>
 

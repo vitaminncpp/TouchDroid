@@ -1,6 +1,5 @@
 package com.akshayaap.touchdroid.io;
 
-import com.akshayaap.touchdroid.R;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -170,120 +169,120 @@ public class KeyMap {
     }
 
     private void initVKeyMap() {
-        vKeyMap.put(R.id.button0, VK_0);
-        vKeyMap.put(R.id.button1, VK_1);
-        vKeyMap.put(R.id.button2, VK_2);
-        vKeyMap.put(R.id.button3, VK_3);
-        vKeyMap.put(R.id.button4, VK_4);
-        vKeyMap.put(R.id.button5, VK_5);
-        vKeyMap.put(R.id.button6, VK_6);
-        vKeyMap.put(R.id.button7, VK_7);
-        vKeyMap.put(R.id.button8, VK_8);
-        vKeyMap.put(R.id.button9, VK_9);
-
-
-        vKeyMap.put(R.id.buttonA, VK_A);
-        vKeyMap.put(R.id.buttonB, VK_B);
-        vKeyMap.put(R.id.buttonC, VK_C);
-        vKeyMap.put(R.id.buttonD, VK_D);
-        vKeyMap.put(R.id.buttonE, VK_E);
-        vKeyMap.put(R.id.buttonF, VK_F);
-        vKeyMap.put(R.id.buttonG, VK_G);
-        vKeyMap.put(R.id.buttonH, VK_H);
-        vKeyMap.put(R.id.buttonI, VK_I);
-        vKeyMap.put(R.id.buttonJ, VK_J);
-        vKeyMap.put(R.id.buttonK, VK_K);
-        vKeyMap.put(R.id.buttonL, VK_L);
-
-
-        vKeyMap.put(R.id.buttonM, VK_M);
-        vKeyMap.put(R.id.buttonN, VK_N);
-        vKeyMap.put(R.id.buttonO, VK_O);
-        vKeyMap.put(R.id.buttonP, VK_P);
-        vKeyMap.put(R.id.buttonQ, VK_Q);
-        vKeyMap.put(R.id.buttonR, VK_R);
-
-        vKeyMap.put(R.id.buttonS, VK_S);
-        vKeyMap.put(R.id.buttonT, VK_T);
-        vKeyMap.put(R.id.buttonU, VK_U);
-        vKeyMap.put(R.id.buttonV, VK_V);
-        vKeyMap.put(R.id.buttonW, VK_W);
-        vKeyMap.put(R.id.buttonX, VK_X);
-        vKeyMap.put(R.id.buttonY, VK_Y);
-        vKeyMap.put(R.id.buttonZ, VK_Z);
-
-        //System keys
-        //Tab
-        vKeyMap.put(R.id.buttonTab, VK_TAB);
-        //ctrl
-        vKeyMap.put(R.id.buttonLCtrl, VK_LEFT_CONTROL);
-        vKeyMap.put(R.id.buttonRCtrl, VK_RIGHT_CONTROL);
-
-        //shift
-        vKeyMap.put(R.id.buttonLShift, VK_LEFT_SHIFT);
-        vKeyMap.put(R.id.buttonRShift, VK_RIGHT_SHIFT);
-
-        //Alt
-        vKeyMap.put(R.id.buttonLAlt, VK_LEFT_ALT);
-        vKeyMap.put(R.id.buttonRAlt, VK_RIGHT_ALT);
-
-        //winkey
-        vKeyMap.put(R.id.buttonWindows, VK_LEFT_WIN);
-
-        //caps lock, num lock
-        vKeyMap.put(R.id.buttonCaps, VK_CAPS_LOCK);
-        //TODO numlock
-
-        //print, delete, insert, end
-        vKeyMap.put(R.id.buttonPrintScr, VK_PRINTSCREEN);
-        vKeyMap.put(R.id.buttonInsert, VK_INSERT);
-        vKeyMap.put(R.id.buttonDelete, VK_DELETE);
-
-        //backspace and enter
-        vKeyMap.put(R.id.buttonBackspace, VK_BACK);
-        vKeyMap.put(R.id.buttonEnter, VK_RETURN);
-        // special characters
-        vKeyMap.put(R.id.buttonBackslash, VK_BACK_SLASH);
-        vKeyMap.put(R.id.buttonEquals, VK_EQUALS);
-        vKeyMap.put(R.id.buttonQuote, VK_QUOTE);
-        vKeyMap.put(R.id.buttonSemiColon, VK_SEMICOLON);
-        vKeyMap.put(R.id.buttonComma, VK_COMMA);
-        vKeyMap.put(R.id.buttonSqOpen, VK_OPEN_BRACKET);
-        vKeyMap.put(R.id.buttonSqClose, VK_CLOSE_BRACKET);
-        vKeyMap.put(R.id.buttonDot, VK_PERIOD);
-        vKeyMap.put(R.id.buttonTiddle, VK_BACK_QUOTE);
-        vKeyMap.put(R.id.buttonSlash, VK_SLASH);
-        vKeyMap.put(R.id.buttonMinus, VK_MINUS);
-
-        //arrow keys
-        vKeyMap.put(R.id.buttonLeft, VK_LEFT);
-        vKeyMap.put(R.id.buttonRight, VK_RIGHT);
-        vKeyMap.put(R.id.buttonUp, VK_UP);
-        vKeyMap.put(R.id.buttonDown, VK_DOWN);
-        // spce bar
-        vKeyMap.put(R.id.buttonSpace, VK_SPACE);
-        //TODO Page up page down
-
-        //num-pad
-        //TODO num-pad keys
-
-        //TODO `ESC` and `END` keys
-        vKeyMap.put(R.id.buttonEsc, VK_ESCAPE);
-        vKeyMap.put(R.id.buttonEnd, VK_END);
-
-        //function keys
-        vKeyMap.put(R.id.buttonF1, VK_F1);
-        vKeyMap.put(R.id.buttonF2, VK_F2);
-        vKeyMap.put(R.id.buttonF3, VK_F3);
-        vKeyMap.put(R.id.buttonF4, VK_F4);
-        vKeyMap.put(R.id.buttonF5, VK_F5);
-        vKeyMap.put(R.id.buttonF6, VK_F6);
-        vKeyMap.put(R.id.buttonF7, VK_F7);
-        vKeyMap.put(R.id.buttonF8, VK_F8);
-        vKeyMap.put(R.id.buttonF9, VK_F9);
-        vKeyMap.put(R.id.buttonF10, VK_F10);
-        vKeyMap.put(R.id.buttonF11, VK_F11);
-        vKeyMap.put(R.id.buttonF12, VK_F12);
+//        vKeyMap.put(R.id.button0, VK_0);
+//        vKeyMap.put(R.id.button1, VK_1);
+//        vKeyMap.put(R.id.button2, VK_2);
+//        vKeyMap.put(R.id.button3, VK_3);
+//        vKeyMap.put(R.id.button4, VK_4);
+//        vKeyMap.put(R.id.button5, VK_5);
+//        vKeyMap.put(R.id.button6, VK_6);
+//        vKeyMap.put(R.id.button7, VK_7);
+//        vKeyMap.put(R.id.button8, VK_8);
+//        vKeyMap.put(R.id.button9, VK_9);
+//
+//
+//        vKeyMap.put(R.id.buttonA, VK_A);
+//        vKeyMap.put(R.id.buttonB, VK_B);
+//        vKeyMap.put(R.id.buttonC, VK_C);
+//        vKeyMap.put(R.id.buttonD, VK_D);
+//        vKeyMap.put(R.id.buttonE, VK_E);
+//        vKeyMap.put(R.id.buttonF, VK_F);
+//        vKeyMap.put(R.id.buttonG, VK_G);
+//        vKeyMap.put(R.id.buttonH, VK_H);
+//        vKeyMap.put(R.id.buttonI, VK_I);
+//        vKeyMap.put(R.id.buttonJ, VK_J);
+//        vKeyMap.put(R.id.buttonK, VK_K);
+//        vKeyMap.put(R.id.buttonL, VK_L);
+//
+//
+//        vKeyMap.put(R.id.buttonM, VK_M);
+//        vKeyMap.put(R.id.buttonN, VK_N);
+//        vKeyMap.put(R.id.buttonO, VK_O);
+//        vKeyMap.put(R.id.buttonP, VK_P);
+//        vKeyMap.put(R.id.buttonQ, VK_Q);
+//        vKeyMap.put(R.id.buttonR, VK_R);
+//
+//        vKeyMap.put(R.id.buttonS, VK_S);
+//        vKeyMap.put(R.id.buttonT, VK_T);
+//        vKeyMap.put(R.id.buttonU, VK_U);
+//        vKeyMap.put(R.id.buttonV, VK_V);
+//        vKeyMap.put(R.id.buttonW, VK_W);
+//        vKeyMap.put(R.id.buttonX, VK_X);
+//        vKeyMap.put(R.id.buttonY, VK_Y);
+//        vKeyMap.put(R.id.buttonZ, VK_Z);
+//
+//        //System keys
+//        //Tab
+//        vKeyMap.put(R.id.buttonTab, VK_TAB);
+//        //ctrl
+//        vKeyMap.put(R.id.buttonLCtrl, VK_LEFT_CONTROL);
+//        vKeyMap.put(R.id.buttonRCtrl, VK_RIGHT_CONTROL);
+//
+//        //shift
+//        vKeyMap.put(R.id.buttonLShift, VK_LEFT_SHIFT);
+//        vKeyMap.put(R.id.buttonRShift, VK_RIGHT_SHIFT);
+//
+//        //Alt
+//        vKeyMap.put(R.id.buttonLAlt, VK_LEFT_ALT);
+//        vKeyMap.put(R.id.buttonRAlt, VK_RIGHT_ALT);
+//
+//        //winkey
+//        vKeyMap.put(R.id.buttonWindows, VK_LEFT_WIN);
+//
+//        //caps lock, num lock
+//        vKeyMap.put(R.id.buttonCaps, VK_CAPS_LOCK);
+//        //TODO numlock
+//
+//        //print, delete, insert, end
+//        vKeyMap.put(R.id.buttonPrintScr, VK_PRINTSCREEN);
+//        vKeyMap.put(R.id.buttonInsert, VK_INSERT);
+//        vKeyMap.put(R.id.buttonDelete, VK_DELETE);
+//
+//        //backspace and enter
+//        vKeyMap.put(R.id.buttonBackspace, VK_BACK);
+//        vKeyMap.put(R.id.buttonEnter, VK_RETURN);
+//        // special characters
+//        vKeyMap.put(R.id.buttonBackslash, VK_BACK_SLASH);
+//        vKeyMap.put(R.id.buttonEquals, VK_EQUALS);
+//        vKeyMap.put(R.id.buttonQuote, VK_QUOTE);
+//        vKeyMap.put(R.id.buttonSemiColon, VK_SEMICOLON);
+//        vKeyMap.put(R.id.buttonComma, VK_COMMA);
+//        vKeyMap.put(R.id.buttonSqOpen, VK_OPEN_BRACKET);
+//        vKeyMap.put(R.id.buttonSqClose, VK_CLOSE_BRACKET);
+//        vKeyMap.put(R.id.buttonDot, VK_PERIOD);
+//        vKeyMap.put(R.id.buttonTiddle, VK_BACK_QUOTE);
+//        vKeyMap.put(R.id.buttonSlash, VK_SLASH);
+//        vKeyMap.put(R.id.buttonMinus, VK_MINUS);
+//
+//        //arrow keys
+//        vKeyMap.put(R.id.buttonLeft, VK_LEFT);
+//        vKeyMap.put(R.id.buttonRight, VK_RIGHT);
+//        vKeyMap.put(R.id.buttonUp, VK_UP);
+//        vKeyMap.put(R.id.buttonDown, VK_DOWN);
+//        // spce bar
+//        vKeyMap.put(R.id.buttonSpace, VK_SPACE);
+//        //TODO Page up page down
+//
+//        //num-pad
+//        //TODO num-pad keys
+//
+//        //TODO `ESC` and `END` keys
+//        vKeyMap.put(R.id.buttonEsc, VK_ESCAPE);
+//        vKeyMap.put(R.id.buttonEnd, VK_END);
+//
+//        //function keys
+//        vKeyMap.put(R.id.buttonF1, VK_F1);
+//        vKeyMap.put(R.id.buttonF2, VK_F2);
+//        vKeyMap.put(R.id.buttonF3, VK_F3);
+//        vKeyMap.put(R.id.buttonF4, VK_F4);
+//        vKeyMap.put(R.id.buttonF5, VK_F5);
+//        vKeyMap.put(R.id.buttonF6, VK_F6);
+//        vKeyMap.put(R.id.buttonF7, VK_F7);
+//        vKeyMap.put(R.id.buttonF8, VK_F8);
+//        vKeyMap.put(R.id.buttonF9, VK_F9);
+//        vKeyMap.put(R.id.buttonF10, VK_F10);
+//        vKeyMap.put(R.id.buttonF11, VK_F11);
+//        vKeyMap.put(R.id.buttonF12, VK_F12);
     }
 
     private void initScanCodeMap() {

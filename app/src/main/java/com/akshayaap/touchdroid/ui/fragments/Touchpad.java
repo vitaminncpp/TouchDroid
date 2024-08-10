@@ -88,6 +88,7 @@ public class Touchpad extends Fragment {
             }
             return true;
         });
+
         event.setType(Event.INPUT_MOUSE);
         return this.view;
     }

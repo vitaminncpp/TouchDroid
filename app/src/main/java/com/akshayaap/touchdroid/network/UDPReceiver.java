@@ -11,22 +11,11 @@ public class UDPReceiver {
 
     private DatagramSocket socket = null;
     private DatagramPacket packet = null;
-
     private boolean onErr = false;
     private IOException ex = null;
     private TaskCompleteCallback onReceived = null;
-
-
-    public UDPReceiver() throws SocketException {
-        socket = new DatagramSocket();
-        packet = new DatagramPacket(null, 0);
-        onReceived = new TaskCompleteCallback() {
-            @Override
-            public void complete() {
-                //TODO Nothing
-            }
-        };
-    }
+    Thread worker = null;
+    boolean isRunning = true;
 
     public UDPReceiver(int port) throws SocketException {
         socket = new DatagramSocket(port);
@@ -35,7 +24,6 @@ public class UDPReceiver {
         this.onReceived = new TaskCompleteCallback() {
             @Override
             public void complete() {
-                //TODO Nothing
             }
         };
     }
@@ -44,7 +32,7 @@ public class UDPReceiver {
         packet.setLength(buff.length);
         packet.setData(buff);
 
-        new Thread() {
+        this.worker = new Thread() {
             @Override
             public void run() {
                 try {
@@ -55,7 +43,8 @@ public class UDPReceiver {
                     UDPReceiver.this.ex = e;
                 }
             }
-        }.start();
+        };
+        this.worker.start();
         if (onErr) {
             onErr = false;
             throw this.ex;
@@ -80,6 +69,7 @@ public class UDPReceiver {
     }
 
     public void close() {
+        this.worker.interrupt();
         socket.close();
     }
 

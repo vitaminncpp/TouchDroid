@@ -2,11 +2,11 @@ package com.akshayaap.touchdroid.abstractfactory;
 
 import com.akshayaap.touchdroid.config.Config;
 import com.akshayaap.touchdroid.debug.DebugDatabase;
-import com.akshayaap.touchdroid.debug.LoggMessage;
+import com.akshayaap.touchdroid.util.logger.LoggMessage;
 import com.akshayaap.touchdroid.io.KeyMap;
 import com.akshayaap.touchdroid.network.UDPReceiver;
 import com.akshayaap.touchdroid.network.UDPSender;
-import com.akshayaap.touchdroid.debug.Logger;
+import com.akshayaap.touchdroid.util.logger.Logger;
 import com.akshayaap.touchdroid.util.Server;
 
 import java.net.InetAddress;
@@ -49,12 +49,16 @@ public class GlobalFactory {
     }
 
     private void init() {
+    }
+
+    public UDPReceiver createEchoReceiver() {
         try {
             this.echoReceiver = new UDPReceiver(Config.ECHO_PORT);
         } catch (SocketException e) {
             LoggMessage message = new LoggMessage("networkerr", "Network Error:" + e.getMessage(), Thread.currentThread().getStackTrace());
             logger.log(message);
         }
+        return this.echoReceiver;
     }
 
     public UDPSender createMessageSender(InetAddress address) {
@@ -68,6 +72,10 @@ public class GlobalFactory {
             logger.log("networkerr", "Failed to Create messageSender:" + e.getMessage());
         }
         return this.messageSender;
+    }
+
+    public void terminateEchoReceiver() {
+        this.echoReceiver.close();
     }
 
     //Returns Global Factory

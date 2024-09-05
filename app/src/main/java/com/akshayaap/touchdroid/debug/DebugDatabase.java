@@ -1,5 +1,7 @@
 package com.akshayaap.touchdroid.debug;
 
+import com.akshayaap.touchdroid.util.logger.LoggMessage;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;

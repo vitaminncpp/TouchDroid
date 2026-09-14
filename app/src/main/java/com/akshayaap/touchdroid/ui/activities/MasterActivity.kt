@@ -1,72 +1,57 @@
-package com.akshayaap.touchdroid.ui.activities;
+package com.akshayaap.touchdroid.ui.activities
 
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.widget.FrameLayout;
+import android.os.Bundle
+import android.view.View
+import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.Fragment
+import com.akshayaap.touchdroid.R
+import com.akshayaap.touchdroid.ui.fragments.Debug
+import com.akshayaap.touchdroid.ui.fragments.Keyboard
+import com.akshayaap.touchdroid.ui.fragments.Network
+import com.akshayaap.touchdroid.ui.fragments.Settings
+import com.akshayaap.touchdroid.ui.fragments.Touchpad
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
-import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+class MasterActivity : AppCompatActivity() {
 
-import com.akshayaap.touchdroid.R;
-import com.akshayaap.touchdroid.ui.fragments.Debug;
-import com.akshayaap.touchdroid.ui.fragments.Keyboard;
-import com.akshayaap.touchdroid.ui.fragments.Network;
-import com.akshayaap.touchdroid.ui.fragments.Settings;
-import com.akshayaap.touchdroid.ui.fragments.Touchpad;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
+    private lateinit var bottomNavigation: BottomNavigationView
 
-public class MasterActivity extends AppCompatActivity {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContentView(R.layout.activity_master)
 
-    private BottomNavigationView bottomNavigation;
-    private FrameLayout frameLayout;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_master);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
-        this.bottomNavigation = findViewById(R.id.bottomNavigation);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new Network()).commit();
-        this.bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-                int itemId = menuItem.getItemId();
-                switch (itemId) {
-                    case R.id.nav_network:
-                        fragmentTransaction.replace(R.id.fragment_container, new Network());
-                        break;
-                    case R.id.nav_touchpad:
-                        fragmentTransaction.replace(R.id.fragment_container, new Touchpad());
-                        break;
-                    case R.id.nav_keyboard:
-                        fragmentTransaction.replace(R.id.fragment_container, new Keyboard());
-                        break;
-                    case R.id.nav_settings:
-                        fragmentTransaction.replace(R.id.fragment_container, new Settings());
-                        break;
-                    case R.id.nav_debug:
-                        fragmentTransaction.replace(R.id.fragment_container, new Debug());
-                        break;
-                    default:
-                        break;
-                }
-                fragmentTransaction.commit();
-                return true;
+        findViewById<View>(R.id.main)?.let { mainView ->
+            ViewCompat.setOnApplyWindowInsetsListener(mainView) { v, insets ->
+                val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+                insets
             }
-        });
+        }
+
+        bottomNavigation = findViewById(R.id.bottomNavigation)
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, Network())
+                .commit()
+        }
+
+        bottomNavigation.setOnItemSelectedListener { menuItem ->
+            val fragment: Fragment = when (menuItem.itemId) {
+                R.id.nav_network -> Network()
+                R.id.nav_touchpad -> Touchpad()
+                R.id.nav_keyboard -> Keyboard()
+                R.id.nav_settings -> Settings()
+                R.id.nav_debug -> Debug()
+                else -> return@setOnItemSelectedListener false
+            }
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, fragment)
+                .commit()
+            true
+        }
     }
 }

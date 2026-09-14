@@ -1,112 +1,80 @@
-package com.akshayaap.touchdroid.abstractfactory;
+package com.akshayaap.touchdroid.abstractfactory
 
-import com.akshayaap.touchdroid.config.Config;
-import com.akshayaap.touchdroid.debug.DebugDatabase;
-import com.akshayaap.touchdroid.util.logger.LoggMessage;
-import com.akshayaap.touchdroid.io.KeyMap;
-import com.akshayaap.touchdroid.network.UDPReceiver;
-import com.akshayaap.touchdroid.network.UDPSender;
-import com.akshayaap.touchdroid.util.logger.Logger;
-import com.akshayaap.touchdroid.util.Server;
+import com.akshayaap.touchdroid.config.Config
+import com.akshayaap.touchdroid.debug.DebugDatabase
+import com.akshayaap.touchdroid.io.KeyMap
+import com.akshayaap.touchdroid.network.UDPReceiver
+import com.akshayaap.touchdroid.network.UDPSender
+import com.akshayaap.touchdroid.util.Server
+import com.akshayaap.touchdroid.util.logger.LoggMessage
+import com.akshayaap.touchdroid.util.logger.Logger
+import java.net.InetAddress
+import java.net.SocketException
 
-import java.net.InetAddress;
-import java.net.SocketException;
-import java.util.Collection;
-import java.util.HashMap;
+class GlobalFactory private constructor() {
 
-public class GlobalFactory {
-    //Shared Global Factory
-    private static GlobalFactory factory = new GlobalFactory();
+    // Factory members
+    var messageSender: UDPSender? = null
+        private set
 
-    //Factory members
-    private UDPSender messageSender = null;
-    private UDPReceiver echoReceiver = null;
+    var echoReceiver: UDPReceiver? = null
+        private set
 
-    private final KeyMap keyMap;
-    private final HashMap<String, Server> servers;
+    val keyMap: KeyMap = KeyMap()
+    private val servers: HashMap<String, Server> = HashMap()
 
-    //utils
-    private final Logger logger;
-    private final DebugDatabase dd;
+    // utils
+    val dd: DebugDatabase = DebugDatabase()
+    val logger: Logger = object : Logger {
+        override fun log(message: LoggMessage) {
+            dd.addMessage(message)
+        }
 
-    private GlobalFactory() {
-        keyMap = new KeyMap();
-        dd = new DebugDatabase();
-        servers = new HashMap<>();
-        logger = new Logger() {
-            @Override
-            public void log(LoggMessage message) {
-                dd.addMessage(message);
-            }
-
-            @Override
-            public void log(String tag, String message) {
-                LoggMessage msg = new LoggMessage(tag, message);
-                dd.addMessage(msg);
-            }
-        };
-        init();
+        override fun log(tag: String, message: String) {
+            val msg = LoggMessage(tag, message)
+            dd.addMessage(msg)
+        }
     }
 
-    private void init() {
-    }
-
-    public UDPReceiver createEchoReceiver() {
+    fun createEchoReceiver(): UDPReceiver? {
         try {
-            this.echoReceiver = new UDPReceiver(Config.ECHO_PORT);
-        } catch (SocketException e) {
-            LoggMessage message = new LoggMessage("networkerr", "Network Error:" + e.getMessage(), Thread.currentThread().getStackTrace());
-            logger.log(message);
+            this.echoReceiver = UDPReceiver(Config.ECHO_PORT)
+        } catch (e: SocketException) {
+            val message = LoggMessage("networkerr", "Network Error: ${e.message}", Thread.currentThread().stackTrace)
+            logger.log(message)
         }
-        return this.echoReceiver;
+        return this.echoReceiver
     }
 
-    public UDPSender createMessageSender(InetAddress address) {
-        if (this.messageSender != null) {
-            this.messageSender.close();
-        }
-        //😆
+    fun createMessageSender(address: InetAddress): UDPSender? {
+        this.messageSender?.close()
         try {
-            this.messageSender = new UDPSender(address, Config.SERVER_PORT);
-        } catch (SocketException e) {
-            logger.log("networkerr", "Failed to Create messageSender:" + e.getMessage());
+            this.messageSender = UDPSender(address, Config.SERVER_PORT)
+        } catch (e: SocketException) {
+            logger.log("networkerr", "Failed to Create messageSender: ${e.message}")
         }
-        return this.messageSender;
+        return this.messageSender
     }
 
-    public void terminateEchoReceiver() {
-        this.echoReceiver.close();
+    fun terminateEchoReceiver() {
+        this.echoReceiver?.close()
     }
 
-    //Returns Global Factory
-    public static GlobalFactory getFactory() {
-        if (factory == null) {
-            factory = new GlobalFactory();
+    fun addServer(server: Server) {
+        val hostAddress = server.ip.hostAddress ?: return
+        this.servers[hostAddress] = server
+    }
+
+    fun getServers(): Collection<Server> {
+        return this.servers.values
+    }
+
+    companion object {
+        private val instance: GlobalFactory = GlobalFactory()
+
+        @JvmStatic
+        fun getFactory(): GlobalFactory {
+            return instance
         }
-        return factory;
-    }
-
-    public UDPSender getMessageSender() {
-        return this.messageSender;
-    }
-
-    public UDPReceiver getEchoReceiver() {
-        return this.echoReceiver;
-    }
-
-    public void addServer(Server server) {
-        this.servers.put(server.getIp().getHostAddress(), server);
-    }
-
-    public Logger getLogger() {
-        return this.logger;
-    }
-
-    public KeyMap getKeyMap() {
-        return this.keyMap;
-    }
-
-    public Collection<Server> getServers() {
-        return this.servers.values();
     }
 }

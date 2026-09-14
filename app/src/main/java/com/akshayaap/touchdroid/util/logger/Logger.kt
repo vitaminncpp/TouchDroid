@@ -1,8 +1,6 @@
-package com.akshayaap.touchdroid.util.logger;
+package com.akshayaap.touchdroid.util.logger
 
-public interface Logger {
-
-    public void log(LoggMessage message);
-
-    public void log(String tag, String message);
+interface Logger {
+    fun log(message: LoggMessage)
+    fun log(tag: String, message: String)
 }

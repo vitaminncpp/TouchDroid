@@ -1,79 +1,66 @@
-package com.akshayaap.touchdroid.network;
+package com.akshayaap.touchdroid.network
 
-import androidx.annotation.NonNull;
+import com.akshayaap.touchdroid.util.TaskCompleteCallback
+import java.io.IOException
+import java.net.DatagramPacket
+import java.net.DatagramSocket
+import java.net.InetAddress
+import java.net.SocketException
+import kotlin.concurrent.thread
 
-import com.akshayaap.touchdroid.util.TaskCompleteCallback;
+class UDPSender {
+    private var socket: DatagramSocket
+    var packet: DatagramPacket
+        private set
 
-import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
-import java.net.SocketException;
+    @Volatile
+    private var onErr = false
 
-public class UDPSender {
-    private DatagramSocket socket = null;
-    private DatagramPacket packet = null;
+    @Volatile
+    private var ex: IOException? = null
 
-    private boolean onErr = false;
-    private IOException ex = null;
+    private var onSent: TaskCompleteCallback? = null
 
-    private TaskCompleteCallback onSent = null;
-
-    public UDPSender(InetAddress ip, int port) throws SocketException {
-        socket = new DatagramSocket(port);
-        packet = new DatagramPacket(new byte[1024], 1024);
-        packet.setAddress(ip);
-        packet.setPort(port);
-
-        onSent = new TaskCompleteCallback() {
-            @Override
-            public void complete() {
-                //TODO Nothing
-            }
-        };
+    @Throws(SocketException::class)
+    constructor(ip: InetAddress, port: Int) {
+        socket = DatagramSocket(port)
+        val buffer = ByteArray(1024)
+        packet = DatagramPacket(buffer, buffer.size, ip, port)
+        onSent = TaskCompleteCallback { }
     }
 
-    public UDPSender() throws SocketException {
-        socket = new DatagramSocket();
-        packet = new DatagramPacket(null, 0);
+    @Throws(SocketException::class)
+    constructor() {
+        socket = DatagramSocket()
+        packet = DatagramPacket(ByteArray(1), 0)
     }
 
-    public void send(@NonNull byte[] data) throws IOException {
-        packet.setData(data);
-        packet.setLength(data.length);
-        new Thread() {
-            @Override
-            public void run() {
-                try {
-                    socket.send(packet);
-                    onSent.complete();
-                } catch (IOException e) {
-                    onErr = true;
-                    UDPSender.this.ex = e;
-                }
+    @Throws(IOException::class)
+    fun send(data: ByteArray) {
+        packet.data = data
+        packet.length = data.size
+        thread {
+            try {
+                socket.send(packet)
+                onSent?.complete()
+            } catch (e: IOException) {
+                onErr = true
+                this.ex = e
             }
-        }.start();
+        }
         if (onErr) {
-            onErr = false;
-            throw ex;
+            onErr = false
+            ex?.let { throw it }
         }
     }
 
-    public void setOnSentCallback(TaskCompleteCallback onSent) {
-        this.onSent = onSent;
+    fun setOnSentCallback(onSent: TaskCompleteCallback) {
+        this.onSent = onSent
     }
 
-    @Override
-    protected void finalize() throws Throwable {
-        super.finalize();
-        this.socket.close();
-    }
-
-    public void close() {
-        socket.close();
-    }
-
-    public DatagramPacket getPacket() {
-        return packet;
+    fun close() {
+        if (!socket.isClosed) {
+            socket.close()
+        }
     }
 }

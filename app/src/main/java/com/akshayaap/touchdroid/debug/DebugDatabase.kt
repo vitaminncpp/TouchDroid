@@ -1,36 +1,25 @@
-package com.akshayaap.touchdroid.debug;
+package com.akshayaap.touchdroid.debug
 
-import com.akshayaap.touchdroid.util.logger.LoggMessage;
+import com.akshayaap.touchdroid.util.logger.LoggMessage
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+class DebugDatabase {
+    private val database: MutableMap<String, ArrayList<LoggMessage>> = HashMap()
 
-public class DebugDatabase {
-    private final Map<String, ArrayList<LoggMessage>> database;
-
-    public DebugDatabase() {
-        database = new HashMap<>();
+    fun addMessage(message: LoggMessage) {
+        val tag = message.tag ?: "default"
+        val messages = database.getOrPut(tag) { ArrayList() }
+        messages.add(message)
     }
 
-    public void addMessage(LoggMessage message) {
-        ArrayList<LoggMessage> messages = database.get(message.getTag());
-        if (messages == null) {
-            messages = new ArrayList<>();
-            database.put(message.getTag(), messages);
+    fun getMessages(tag: String): ArrayList<LoggMessage>? {
+        return database[tag]
+    }
+
+    fun getAllMessages(): ArrayList<LoggMessage> {
+        val list = ArrayList<LoggMessage>()
+        for (messages in database.values) {
+            list.addAll(messages)
         }
-        messages.add(message);
-    }
-
-    public ArrayList<LoggMessage> getMessages(String tag) {
-        return database.get(tag);
-    }
-
-    public ArrayList<LoggMessage> getAllMessages() {
-        ArrayList<LoggMessage> list = new ArrayList<>();
-        for (String key : database.keySet()) {
-            list.addAll(database.get(key));
-        }
-        return list;
+        return list
     }
 }

@@ -1,99 +1,59 @@
-package com.akshayaap.touchdroid.util.logger;
+package com.akshayaap.touchdroid.util.logger
 
-import java.util.Arrays;
+import java.util.Arrays
 
-public class LoggMessage {
-    String tag;
-    String message;
-    String longMessage;
-    String description;
-    StackTraceElement stackTrace[] = null;
+class LoggMessage {
+    var tag: String? = null
+    var message: String? = null
+    var longMessage: String? = null
+    var description: String? = null
+    var stackTrace: Array<StackTraceElement>? = null
 
-    public String getTag() {
-        return tag;
+    constructor(tag: String?, message: String?, stackTrace: Array<StackTraceElement>?) {
+        this.tag = tag
+        this.message = message
+        this.stackTrace = stackTrace
+        this.longMessage = null
+        this.description = null
     }
 
-
-    public void setTag(String tag) {
-        this.tag = tag;
+    constructor(tag: String?, message: String?, longMessage: String?, stackTrace: Array<StackTraceElement>?) {
+        this.tag = tag
+        this.message = message
+        this.longMessage = longMessage
+        this.stackTrace = stackTrace
+        this.description = null
     }
 
-    public String getMessage() {
-        return message;
+    constructor(
+        tag: String?,
+        message: String?,
+        longMessage: String?,
+        description: String?,
+        stackTrace: Array<StackTraceElement>?
+    ) {
+        this.tag = tag
+        this.message = message
+        this.longMessage = longMessage
+        this.description = description
+        this.stackTrace = stackTrace
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    constructor(tag: String?, message: String?) {
+        this.tag = tag
+        this.message = message
+        this.longMessage = null
+        this.description = null
+        this.stackTrace = Thread.currentThread().stackTrace
     }
 
-    public String getLongMessage() {
-        return longMessage;
-    }
-
-    public void setLongMessage(String longMessage) {
-        this.longMessage = longMessage;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public StackTraceElement[] getStackTrace() {
-        return stackTrace;
-    }
-
-    public void setStackTrace(StackTraceElement[] stackTrace) {
-        this.stackTrace = stackTrace;
-    }
-
-    public LoggMessage(String tag, String message, StackTraceElement[] stackTrace) {
-        this.tag = tag;
-        this.message = message;
-        this.stackTrace = stackTrace;
-
-        this.longMessage = null;
-        this.description = null;
-    }
-
-    public LoggMessage(String tag, String message, String longMessage, StackTraceElement[] stackTrace) {
-        this.tag = tag;
-        this.message = message;
-        this.longMessage = longMessage;
-        this.stackTrace = stackTrace;
-
-        this.description = null;
-    }
-
-    public LoggMessage(String tag, String message, String longMessage, String description, StackTraceElement[] stackTrace) {
-        this.tag = tag;
-        this.message = message;
-        this.longMessage = longMessage;
-        this.description = description;
-        this.stackTrace = stackTrace;
-    }
-
-    public LoggMessage(String tag, String message) {
-        this.tag = tag;
-        this.message = message;
-
-        this.longMessage = null;
-        this.description = null;
-        this.stackTrace = Thread.currentThread().getStackTrace();
-    }
-
-
-    @Override
-    public String toString() {
+    override fun toString(): String {
         return "{" +
                 "\"tag\":\"" + tag + '\"' +
                 ", \"message\":\"" + message + '\"' +
                 ", \"longMessage\":\"" + longMessage + '\"' +
                 ", \"description\":\"" + description + '\"' +
                 ", \"stackTrace\":\"" + Arrays.toString(stackTrace) + '\"' +
-                '}';
+                '}'
     }
 }

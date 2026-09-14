@@ -1,5 +1,5 @@
-package com.akshayaap.touchdroid.util;
+package com.akshayaap.touchdroid.util
 
-public interface TaskCompleteCallback {
-    public void complete();
+fun interface TaskCompleteCallback {
+    fun complete()
 }

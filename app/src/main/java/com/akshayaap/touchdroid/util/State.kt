@@ -1,77 +1,72 @@
-package com.akshayaap.touchdroid.util;
+package com.akshayaap.touchdroid.util
 
-public class State {
-    private int state = -1;
-    private int prevState = -1;
-    private int pCount = 0;
-    private int prevCount = 0;
-    private int time = 0; // in milliseconds
-    private int prevTime = 0; // in milliseconds
-    private int event = -1;
-    private int prevEvent = -1;
+class State {
+    private var state: Int = -1
+    private var prevState: Int = -1
+    private var pCount: Int = 0
+    private var prevCount: Int = 0
+    private var time: Int = 0 // in milliseconds
+    private var prevTime: Int = 0 // in milliseconds
+    private var event: Int = -1
+    private var prevEvent: Int = -1
 
-    public State() {
+    @Synchronized
+    fun getState(): Int = this.state
 
+    @Synchronized
+    fun setState(state: Int) {
+        this.prevState = this.state
+        this.state = state
     }
 
-    public synchronized int getState() {
-        return this.state;
+    @Synchronized
+    fun getPrevState(): Int = this.prevState
+
+    @Synchronized
+    fun setPrevState(state: Int) {
+        this.prevState = state
     }
 
-    public synchronized void setState(int state) {
-        this.prevState = this.state;
-        this.state = state;
+    @Synchronized
+    fun setCount(count: Int) {
+        this.prevCount = this.pCount
+        this.pCount = count
     }
 
-    public synchronized int getPrevState() {
-        return this.prevState;
+    @Synchronized
+    fun getCount(count: Int = 0): Int = this.pCount
+
+    @Synchronized
+    fun getPrevCount(): Int = this.prevCount
+
+    @Synchronized
+    fun setPrevCount(count: Int) {
+        this.prevCount = count
     }
 
-    public synchronized void setPrevState(int state) {
-        this.prevState = state;
+    @Synchronized
+    fun getTime(): Int = this.time
+
+    @Synchronized
+    fun setTime(time: Int) {
+        this.prevTime = this.time
+        this.time = time
     }
 
-    public synchronized void setCount(int count) {
-        this.prevCount = this.pCount;
-        this.pCount = count;
+    @Synchronized
+    fun getEvent(): Int = this.event
+
+    @Synchronized
+    fun setEvent(event: Int) {
+        this.prevEvent = this.event
+        this.event = event
     }
 
-    public synchronized int getCount(int count) {
-        return this.pCount;
-    }
+    @Synchronized
+    fun getPrevEvent(): Int = this.prevEvent
 
-    public synchronized int getPrevCount() {
-        return this.prevCount;
-    }
-
-    public synchronized void setPrevCount(int count) {
-        this.prevCount = count;
-    }
-
-    public synchronized int getTime() {
-        return this.time;
-    }
-
-    public synchronized void setTime(int time) {
-        this.prevTime = this.time;
-        this.time = time;
-    }
-
-    public synchronized int getEvent() {
-        return event;
-    }
-
-    public synchronized void setEvent(int event) {
-        this.prevEvent = this.event;
-        this.event = event;
-
-    }
-
-    public synchronized int getPrevEvent() {
-        return prevEvent;
-    }
-
-    public synchronized void setPrevEvent(int prevEvent) {
-        this.prevEvent = prevEvent;
+    @Synchronized
+    fun setPrevEvent(prevEvent: Int) {
+        this.prevEvent = prevEvent
     }
 }

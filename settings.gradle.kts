@@ -1,14 +1,12 @@
 plugins {
-    id 'org.gradle.toolchains.foojay-resolver-convention' version '1.0.0'
+    id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
 }
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
-        //noinspection JcenterRepositoryObsolete
-        // Warning: this repository is going to shut down soon
     }
 }
 rootProject.name = "TouchDroid"
-include ':app'
+include(":app")

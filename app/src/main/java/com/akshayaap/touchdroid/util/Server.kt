@@ -1,35 +1,16 @@
-package com.akshayaap.touchdroid.util;
+package com.akshayaap.touchdroid.util
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
+import java.net.InetAddress
+import java.net.UnknownHostException
 
-public class Server {
-    private final InetAddress ip;
-    private final String name;
+data class Server(
+    val ip: InetAddress,
+    val name: String
+) {
+    @Throws(UnknownHostException::class)
+    constructor(ip: String, name: String) : this(InetAddress.getByName(ip), name)
 
-    public Server(String ip, String name) throws UnknownHostException {
-        this.ip = InetAddress.getByName(ip);
-        this.name = name;
-    }
-
-    public Server(InetAddress ip, String name) {
-        this.ip = ip;
-        this.name = name;
-    }
-
-    public InetAddress getIp() {
-        return ip;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public String toString() {
-        return "{" +
-                "\"ip\":\"" + ip.getHostAddress() + '\"' +
-                ", \"name\":\"" + name + '\"' +
-                '}';
+    override fun toString(): String {
+        return "{\"ip\":\"${ip.hostAddress}\", \"name\":\"$name\"}"
     }
 }

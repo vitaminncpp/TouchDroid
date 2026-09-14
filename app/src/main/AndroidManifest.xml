@@ -21,20 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.activities.Debugger"
-            android:exported="true" />
-        <activity
-            android:name=".ui.activities.Keyboard"
-            android:exported="true" />
-        <activity
-            android:name=".ui.activities.TouchPad"
-            android:exported="true" />
-        <activity
-            android:name=".ui.activities.MainActivity"
-            android:exported="true">
 
-        </activity>
 
         <meta-data
             android:name="preloaded_fonts"

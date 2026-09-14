@@ -1,79 +1,68 @@
-package com.akshayaap.touchdroid.network;
+package com.akshayaap.touchdroid.network
 
-import com.akshayaap.touchdroid.util.TaskCompleteCallback;
+import com.akshayaap.touchdroid.util.TaskCompleteCallback
+import java.io.IOException
+import java.net.DatagramPacket
+import java.net.DatagramSocket
+import java.net.SocketException
+import kotlin.concurrent.thread
 
-import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.SocketException;
+class UDPReceiver(port: Int) {
 
-public class UDPReceiver {
+    private val socket: DatagramSocket = DatagramSocket(port)
+    var packet: DatagramPacket = DatagramPacket(ByteArray(4), 4)
+        private set
 
-    private DatagramSocket socket = null;
-    private DatagramPacket packet = null;
-    private boolean onErr = false;
-    private IOException ex = null;
-    private TaskCompleteCallback onReceived = null;
-    Thread worker = null;
-    boolean isRunning = true;
+    @Volatile
+    private var onErr = false
 
-    public UDPReceiver(int port) throws SocketException {
-        socket = new DatagramSocket(port);
-        packet = new DatagramPacket(new byte[4], 4);
-        packet.setPort(port);
-        this.onReceived = new TaskCompleteCallback() {
-            @Override
-            public void complete() {
-            }
-        };
+    @Volatile
+    private var ex: IOException? = null
+
+    private var onReceived: TaskCompleteCallback = TaskCompleteCallback { }
+    var worker: Thread? = null
+    var isRunning = true
+
+    init {
+        packet.port = port
     }
 
-    public void receive(byte[] buff) throws IOException {
-        packet.setLength(buff.length);
-        packet.setData(buff);
+    @Throws(IOException::class)
+    fun receive(buff: ByteArray) {
+        packet.length = buff.size
+        packet.data = buff
 
-        this.worker = new Thread() {
-            @Override
-            public void run() {
-                try {
-                    socket.receive(packet);
-                    onReceived.complete();
-                } catch (IOException e) {
-                    onErr = true;
-                    UDPReceiver.this.ex = e;
-                }
+        worker = thread {
+            try {
+                socket.receive(packet)
+                onReceived.complete()
+            } catch (e: IOException) {
+                onErr = true
+                this.ex = e
             }
-        };
-        this.worker.start();
+        }
         if (onErr) {
-            onErr = false;
-            throw this.ex;
+            onErr = false
+            ex?.let { throw it }
         }
     }
 
-    public void receive(byte[] buff, TaskCompleteCallback onReceived) throws IOException {
-        TaskCompleteCallback temp = this.onReceived;
-        this.onReceived = onReceived;
-        receive(buff);
-        this.onReceived = temp;
+    @Throws(IOException::class)
+    fun receive(buff: ByteArray, onReceived: TaskCompleteCallback) {
+        val temp = this.onReceived
+        this.onReceived = onReceived
+        receive(buff)
+        this.onReceived = temp
     }
 
-    public void setOnReceivedCallback(TaskCompleteCallback onReceived) {
-        this.onReceived = onReceived;
+    fun setOnReceivedCallback(onReceived: TaskCompleteCallback) {
+        this.onReceived = onReceived
     }
 
-    @Override
-    protected void finalize() throws Throwable {
-        super.finalize();
-        socket.close();
-    }
-
-    public void close() {
-        this.worker.interrupt();
-        socket.close();
-    }
-
-    public DatagramPacket getPacket() {
-        return packet;
+    fun close() {
+        worker?.interrupt()
+        if (!socket.isClosed) {
+            socket.close()
+        }
     }
 }

@@ -1,6 +1,6 @@
-package com.akshayaap.touchdroid.config;
+package com.akshayaap.touchdroid.config
 
-public class Config {
-    public static final int ECHO_PORT = 5560;
-    public static final int SERVER_PORT = 5559;
+object Config {
+    const val ECHO_PORT: Int = 5560
+    const val SERVER_PORT: Int = 5559
 }
